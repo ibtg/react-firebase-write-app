@@ -11,7 +11,7 @@ function App({authService}) {
           <Route exact path="/">
             <Login authService={authService}></Login>
           </Route>
-          <Route path="/main">
+          <Route exact path="/main">
             <Main authService={authService}></Main>
           </Route>
 

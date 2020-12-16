@@ -9,6 +9,10 @@ class AuthService{
     return firebaseApp.auth().signInWithPopup(authProvider);
   }
   
+  // logout
+  logout(){
+    firebase.auth().signOut()
+  }
 
   // state change check
   onAuthChange(onUserChanged){

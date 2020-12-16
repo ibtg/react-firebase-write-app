@@ -22,12 +22,11 @@ const Login = ({authService}) =>{
   }
 
   useEffect(() => {
-
     authService.onAuthChange(user =>{
       user && goToMain(user.uid)
     })
 
-  },)
+  })
 
   return(
     <section className={styles.login}>
