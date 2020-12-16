@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import styles from './header.module.css'
 import {FaBars} from 'react-icons/fa'
 
-const Header = () => {
+const Header = ({onClickMenu}) => {
   const [dateInfo, setDateInfo] = useState({})
 
   useEffect(() => {
     const date = new Date();
     const year = date.getFullYear();
-    const month = date.getMonth();
+    const month = date.getMonth()+1;
     const day = date.getDate();
     const hours = date.getHours();
 
@@ -41,7 +41,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <FaBars className={styles.menu}></FaBars>
+      <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
       <span className={styles.date}>{`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일 ${dateInfo.hour}`}</span>
   </header>
   )
