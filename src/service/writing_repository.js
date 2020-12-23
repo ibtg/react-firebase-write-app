@@ -5,22 +5,25 @@ class WritingRepository{
 
   getSubjects(onUpdate){
     const ref = firebaseDatabase.ref('subjects');
-    // console.log("ref: ", ref)
 
-    ref.on('value', snapshot =>{
+    ref.once('value', snapshot =>{
       const value = snapshot.val();
-      // console.log("value: ", value)
-      // console.log("object value: ", Object.values(value))
-      // value && onUpdate(Object.entries(value))
       value && onUpdate(value)
     })
 
     return ()=>ref.off();
   }
 
-  // saveWriting(userId, writing){
-  //   firebaseDatabase.ref(`${userId}/writing/${writing.id}`).set(writing)
-  // }
+  // when the writing about specific subject is written, number is counted
+  saveSubjectCount(subjectId, count){
+    firebaseDatabase.ref(`subjects/${subjectId}/count`).set(count)
+  }
+
+
+  // saver user's writing
+  saveWriting(userId, subjectId, subject){
+    firebaseDatabase.ref(`subjects/${subjectId}/${userId}`).set(subject)
+  }
 }
 
 
