@@ -6,13 +6,9 @@ const Subject = ({id, subject, count}) => {
   const history = useHistory();
   const goToWrite = (event) =>{
     event.preventDefault()
-    // console.log("event: ", event.currentTarget) 
-    // console.log("event: ", event.currentTarget.textContent) 
-    // // console.log("event: ", event.currentTarget.querySele) 
-    console.log("move to write")
 
     history.push({
-      pathname:'/writing',
+      pathname:'/writepage',
       state:{
         id:id , 
         subject:subject , 
