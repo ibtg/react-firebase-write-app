@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './main.module.css'
-import Sidebar from '../sidebar/sidebar'
 import Header from '../header/header'
+
 
 const Main = ({authService}) => {
 
   const historyState = useHistory().state;
   const history = useHistory();
   const [userId, setUserId] = useState(historyState && historyState.id)
-  const [sidebar, setSidebar] = useState(false)
-
-  const onClickMenu = () => {
-    setSidebar(!sidebar)
-  }
-
-  const onLogout = () =>{
-    authService.logout();
-  }
+  
 
   // useEffect(() => {
   //   
@@ -40,12 +32,12 @@ const Main = ({authService}) => {
       }
     })
 
-  })
+  }, [authService, history])
 
   return(
     <>
-      <Header onClickMenu={onClickMenu} ></Header>
-      <Sidebar sidebar={sidebar} onClickMenu={onClickMenu} onLogout={onLogout}></Sidebar>
+      <Header authService={authService}></Header>
+      Main
     </>
   )
 }
