@@ -1,9 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import styles from './header.module.css'
 import {FaBars} from 'react-icons/fa'
+import Sidebar from '../sidebar/sidebar'
+import { useHistory } from 'react-router-dom'
 
-const Header = ({onClickMenu}) => {
+
+
+const Header = ({authService}) => {
   const [dateInfo, setDateInfo] = useState({})
+  const [sidebar, setSidebar] = useState(false)
+  const history = useHistory()
+
+  const onClickMenu = () => {
+    setSidebar(!sidebar)
+  }
+
+  const onLogout = () =>{
+    authService.logout();
+  }
+
+  const goToSubjects = () =>{
+    history.push({
+      pathname:'/subjects'
+    })
+  }
+
+  const goToWriting = () =>{
+    history.push({
+      pathname:'/writing'
+    })
+  }
+
 
   useEffect(() => {
     const date = new Date();
@@ -40,10 +67,21 @@ const Header = ({onClickMenu}) => {
 
 
   return (
-    <header className={styles.header}>
-      <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
-      <span className={styles.date}>{`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일 ${dateInfo.hour}`}</span>
-  </header>
+    <>
+      <header className={styles.header}>
+        <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
+        <span className={styles.date}>{`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일, ${dateInfo.hour}`}</span>
+      </header>
+      <Sidebar 
+        sidebar={sidebar} 
+        onClickMenu={onClickMenu} 
+        onLogout={onLogout} 
+        goToSubjects={goToSubjects}
+        goToWriting={goToWriting}
+      >
+      </Sidebar>
+    </>
+
   )
 }
 

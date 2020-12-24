@@ -1,21 +1,23 @@
 .header {
   width: 100%;
   background-color: #fff;
-  height: 60px;
+  height: 3.2em;
   position: fixed;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1em;
+  /* border-bottom: 1px solid #ddd; */
 }
 
 .menu {
   width: 27px;
   height: 20px;
   cursor: pointer;
+  color: #000;
 }
 
 .date {
-  color: #666666;
+  color: #acacac;
 }
