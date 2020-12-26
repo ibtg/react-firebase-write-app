@@ -9,6 +9,12 @@ const Writing = ({authService, writingRepository}) => {
   const history = useHistory();
   const [writing, setWriting] = useState({})
   const [time, setTime] = useState(0)
+  const [writingPage, setWritingPage] = useState(false)
+
+  const onWritingPage = (event)=>{
+    event.preventDefault();
+    setWriting(!writingPage)
+  }
 
   useEffect(() => {
     // check user log in
@@ -41,12 +47,19 @@ const Writing = ({authService, writingRepository}) => {
     <>
       <Header authService={authService}></Header>
       <div className={styles.wrapper}>
-          {Object.keys(writing).length !==0 &&          
+          {Object.keys(writing).length !==0 &&  
+            writingPage === false ?        
             <WritingCoverPage 
+              subjectId={writing.subjectId}
               writingInfo={writing.info.cover}
               subject={writing.info.subject}
+              count={Object.keys(writing.info.users).length}
+              onWritingPage={onWritingPage}
               >
-            </WritingCoverPage> 
+            </WritingCoverPage>
+            :
+            <WritingPage>
+            </WritingPage> 
           }
       </div>
 
