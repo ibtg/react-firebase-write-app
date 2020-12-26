@@ -6,10 +6,9 @@ import styles from './writePage.module.css'
 const WritePage = ({authService, writingRepository}) => {
 
   // console.log("history: ", useHistory())
-  const [userId, setUserId] = useState('')
-  const subjectId = useHistory().location.state.id;
+  const [user, setUser] = useState('')
+  const subjectId = useHistory().location.state.subjectId;
   const subject = useHistory().location.state.subject;
-  const subjectCount = useHistory().location.state.count;
 
   const history = useHistory();
   const formRef = useRef();
@@ -24,16 +23,16 @@ const WritePage = ({authService, writingRepository}) => {
     }
 
     const writing = {
-      id: Date.now(),
-      title:subject,
-      content:textareaRef.current.value 
+      contentId: Date.now(),
+      subject:subject,
+      content:textareaRef.current.value,
+      username:user.displayName
     }
   
-    
-    console.log("saveSubjectCount: ", subjectId, subjectCount+1 )
-    console.log("saveWriting: ", userId, subjectId, writing )
-    writingRepository.saveSubjectCount(subjectId, subjectCount+1)
-    writingRepository.saveWriting(userId, subjectId, writing )
+
+    // console.log("saveWriting: ", userId, subjectId, writing )
+    // writingRepository.saveSubjectCount(subjectId, subjectCount+1)
+    writingRepository.saveWriting(user.uid, subjectId, writing )
 
     formRef.current.reset();
   }
@@ -45,12 +44,15 @@ const WritePage = ({authService, writingRepository}) => {
       if(!user){
         history.push('/')
       }
-      setUserId(user.uid)
+      setUser(user)
     })
 
   })
 
+  
 
+  // console.log("subjectId: ", subjectId)
+  // console.log("subject: ", subject)
 
   return (
 

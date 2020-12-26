@@ -3,7 +3,7 @@ import styles from './writingCoverPage.module.css'
 import {BsChevronDoubleRight} from 'react-icons/bs'
 import { useHistory } from 'react-router-dom'
 
-const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage, }) => {
+const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage}) => {
 
   const history = useHistory();
   const goToWrite = (event) =>{
@@ -12,11 +12,11 @@ const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage,
     history.push({
       pathname:'/writepage',
       state:{
-        id:subjectId , 
-        subject:subject , 
-        count: count}
+        subjectId:subjectId , 
+        subject:subject }
       })
     }
+    console.log("subjectId: ", subjectId)
 
   return (
     <section className={styles.container}>

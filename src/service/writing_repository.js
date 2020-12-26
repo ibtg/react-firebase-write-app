@@ -1,4 +1,4 @@
-import {firebaseDatabase, firebaseAuth} from './firebase'
+import {firebaseDatabase} from './firebase'
 
 class WritingRepository{
 
@@ -41,11 +41,18 @@ class WritingRepository{
   }
 
 
-  // saver user's writing
-  saveWriting(userId, subjectId, subject){
-    console.log("user: ", firebaseAuth.currentUser)
-    console.log("user id: ", firebaseAuth.currentUser.displayName)
-    // firebaseDatabase.ref(`subjects/${subjectId}/${userId}`).set(subject)
+  // save user's writing
+  saveWriting(userId, subjectId, writing){
+    console.log(userId, subjectId, writing)
+    // console.log("user: ", firebaseAuth.currentUser)
+    // console.log("user id: ", firebaseAuth.currentUser.displayName)
+
+    // save in subject
+    firebaseDatabase.ref(`subjects/${subjectId}/users/${userId}`).set(writing)
+
+    // // save as user
+    firebaseDatabase.ref(`users/${userId}/${subjectId}`).set(writing)
+
   }
 }
 
