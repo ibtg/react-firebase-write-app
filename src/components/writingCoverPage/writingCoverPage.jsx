@@ -18,10 +18,6 @@ const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage,
       })
     }
 
-console.log("writingInfo: ", writingInfo)
-console.log("subject: ",subject )
-console.log("countL ",count )
-
   return (
     <section className={styles.container}>
       <span className={styles.subject}>{subject}</span>
