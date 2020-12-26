@@ -31,7 +31,9 @@ const Subjects = ({authService, writingRepository}) => {
   }, [writingRepository])
 
   // console.log("subjects: ", subjects)
-  // console.log("subjects entires: ", Object.entries(subjects))
+  // const subject =  Object.entries(subjects)[0]
+  // console.log("subject : ", subject )
+  // console.log("subjects entires: ", subject && Object.keys(subject[1].users))
 
   return (
     <>
@@ -39,7 +41,12 @@ const Subjects = ({authService, writingRepository}) => {
       <section className={styles.container}>
         <ul className={styles.list}>
           {subjects && Object.entries(subjects).map(subject => 
-          <Subject key={subject[0]} id={subject[0]} subject={subject[1].subject} count={subject[1].count}></Subject>)}
+          <Subject 
+            key={subject[0]} 
+            subjectId={subject[0]} 
+            subject={subject[1].subject} 
+            count={Object.keys(subject[1].users).length}>
+          </Subject>)}
         </ul>
       </section>
     </>

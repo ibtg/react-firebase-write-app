@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './subject.module.css'
 
-const Subject = ({id, subject, count}) => {
+const Subject = ({subjectId, subject, count}) => {
   const history = useHistory();
   const goToWrite = (event) =>{
     event.preventDefault()
@@ -10,9 +10,9 @@ const Subject = ({id, subject, count}) => {
     history.push({
       pathname:'/writepage',
       state:{
-        id:id , 
-        subject:subject , 
-        count: count}
+        subjectid:subjectId , 
+        subject:subject
+        }
     })
   }
 
