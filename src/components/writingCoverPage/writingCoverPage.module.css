@@ -1,0 +1,47 @@
+.container {
+  margin-top: 3.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25%;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 1.2em;
+  height: 100%;
+}
+
+.subject {
+  font-size: 2em;
+  margin-bottom: 1.2em;
+}
+
+.writing {
+  font-size: 1.1em;
+  margin-bottom: 1.2em;
+}
+
+.writingInfo {
+  color: #acacaa;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.2em;
+}
+
+.writer {
+  margin-right: 0.2em;
+}
+
+.button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  color: #acacaa;
+  cursor: pointer;
+}
+
+.buttonIcon {
+  transform: translateY(0.2em);
+  margin-right: 0.1em;
+}

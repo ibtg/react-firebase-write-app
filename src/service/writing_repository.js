@@ -1,4 +1,4 @@
-import {firebaseDatabase} from './firebase'
+import {firebaseDatabase, firebaseAuth} from './firebase'
 
 class WritingRepository{
 
@@ -20,19 +20,16 @@ class WritingRepository{
   getWriting(onUpdate){
     const ref = firebaseDatabase.ref('subjects')
     // console.log("ref: ", ref)
-
     ref.once('value', snapshot =>{
+      // .StartAt(time).limitToFirst(1).
       const value = snapshot.val();
       // const randIdx = parseInt(Math.random()* Object.keys(value).length) //get rand Index
-      // const writingKey = Object.keys(value)[randIdx] // get key of rand Index
-      // console.log("object keys: ", Object.keys(value)[randIdx])
-      // const writing = value[Object.keys(value)[0]] //  value[Object.keys(value)[writingKey]] 
       // console.log("randIdx : ", randIdx )
       // console.log("value: ", value)
       
-      const writing = value[Object.keys(value)[0]]
-      // // console.log("writing: ", writing.users)
-      value && onUpdate(Object.entries(writing.users))
+      const writing = Object.entries(value)[0]
+      // console.log("writing: ", writing)
+      value && onUpdate({subjectId:writing[0] , info:writing[1] })
     })
 
     return ()=>ref.off();
@@ -46,7 +43,9 @@ class WritingRepository{
 
   // saver user's writing
   saveWriting(userId, subjectId, subject){
-    firebaseDatabase.ref(`subjects/${subjectId}/${userId}`).set(subject)
+    console.log("user: ", firebaseAuth.currentUser)
+    console.log("user id: ", firebaseAuth.currentUser.displayName)
+    // firebaseDatabase.ref(`subjects/${subjectId}/${userId}`).set(subject)
   }
 }
 

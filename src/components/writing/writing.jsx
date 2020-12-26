@@ -3,34 +3,12 @@ import styles from './writing.module.css';
 import Header from '../header/header'
 import { useHistory } from 'react-router-dom';
 import WritingPage from '../writingPage/writingPage'
-
+import WritingCoverPage from '../writingCoverPage/writingCoverPage'
 
 const Writing = ({authService, writingRepository}) => {
   const history = useHistory();
-  const [count, setCount] = useState(0)
-  const [writing, setWriting] = useState([])
-  const [rightButton, setRightButton] = useState(true)
-  const [leftButton, setLeftButton] = useState(false)
-  
-  const onAdd = ()=>{
-    if(count+1 === Object.keys(writing).length){
-      alert('마지막 페이지입니다.')
-      return
-    }
-    setCount(count+1)
-    setLeftButton(true)
-  }
-
-  const onMinus = ()=>{
-    if(count-1 < 0){
-      return
-    }
-    else if(count-1 ===0){
-      setLeftButton(false)
-    }
-    setCount(count-1)
-    
-  }
+  const [writing, setWriting] = useState({})
+  const [time, setTime] = useState(0)
 
   useEffect(() => {
     // check user log in
@@ -42,31 +20,36 @@ const Writing = ({authService, writingRepository}) => {
   })
 
   useEffect(() => {
-    const writingList =  writingRepository.getWriting((users)=>{
-      setWriting(users)
-    })
+    const currentHour = new Date().getHours()
     
-    return ()=>writingList()
+    // get new subject every 12 hours
+    if(currentHour !== time){
+      const subjectList =  writingRepository.getWriting(writing=>{
+        setWriting(writing)
+        return ()=>subjectList();
+    })
+    setTime(currentHour)
+    }
 
-  }, [writingRepository])
+  }, [writingRepository, time])
   
 
-  // console.log("users: ", writing)
-  console.log("count: ", count)
-  console.log(Object.keys(writing).length)
+  console.log("writing: ", writing)
+  // console.log("count: ", count)
 
   return (
     <>
       <Header authService={authService}></Header>
-      {writing.length !==0 && 
-      <WritingPage 
-        writing={writing[count]} 
-        rightButton={rightButton}
-        leftButton={leftButton}
-        onAdd={onAdd}
-        onMinus={onMinus}
-      >
-      </WritingPage>}
+      <div className={styles.wrapper}>
+          {Object.keys(writing).length !==0 &&          
+            <WritingCoverPage 
+              writingInfo={writing.info.cover}
+              subject={writing.info.subject}
+              >
+            </WritingCoverPage> 
+          }
+      </div>
+
     </>
   )
 }
