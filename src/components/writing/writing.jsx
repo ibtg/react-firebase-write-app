@@ -13,7 +13,7 @@ const Writing = ({authService, writingRepository}) => {
 
   const onWritingPage = (event)=>{
     event.preventDefault();
-    setWriting(!writingPage)
+    setWritingPage(!writingPage)
   }
 
   useEffect(() => {
@@ -43,26 +43,36 @@ const Writing = ({authService, writingRepository}) => {
   console.log("writing: ", writing)
   // console.log("count: ", count)
 
+
+  
+
   return (
     <>
       <Header authService={authService}></Header>
-      <div className={styles.wrapper}>
-          {Object.keys(writing).length !==0 &&  
-            writingPage === false ?        
+      {Object.keys(writing).length !==0 &&  
+        <div className={styles.wrapper}>
+          {writingPage === false ? 
             <WritingCoverPage 
               subjectId={writing.subjectId}
               writingInfo={writing.info.cover}
               subject={writing.info.subject}
-              count={Object.keys(writing.info.users).length}
+              count={writing.info.count}
               onWritingPage={onWritingPage}
               >
             </WritingCoverPage>
             :
-            <WritingPage>
+            <WritingPage
+              subjectId={writing.subjectId}
+              writingInfo={writing.info.cover}
+              subject={writing.info.subject}
+              count={writing.info.count}
+              users={writing.info.users}
+              onWritingPage={onWritingPage}
+            >
             </WritingPage> 
           }
-      </div>
-
+        </div>
+      }
     </>
   )
 }
