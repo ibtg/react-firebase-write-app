@@ -23,13 +23,13 @@ class WritingRepository{
     ref.once('value', snapshot =>{
       // .StartAt(time).limitToFirst(1).
       const value = snapshot.val();
-      // const randIdx = parseInt(Math.random()* Object.keys(value).length) //get rand Index
+      const randIdx = parseInt(Math.random()*Object.keys(value).length) //get rand Index
       // console.log("randIdx : ", randIdx )
       // console.log("value: ", value)
       
-      const writing = Object.entries(value)[0]
+      const writing = Object.entries(value)[randIdx]
       // console.log("writing: ", writing)
-      value && onUpdate({subjectId:writing[0] , info:writing[1] })
+      value && onUpdate({subject:writing[0], info:writing[1] })
     })
 
     return ()=>ref.off();
@@ -63,7 +63,7 @@ class WritingRepository{
     ref.once('value', snapshot =>{
       const value = snapshot.val();
 
-      console.log("value: ", value)
+      // console.log("value: ", value)
       // console.log("object lendght: ", Object.keys(value).length)
       value && onUpdate(value)
     })

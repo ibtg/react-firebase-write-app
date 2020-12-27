@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './writing.module.css';
 import Header from '../header/header'
-import { useHistory } from 'react-router-dom';
 import WritingPage from '../writingPage/writingPage'
 import WritingCoverPage from '../writingCoverPage/writingCoverPage'
 
 const Writing = ({user, authService, writingRepository}) => {
-  const history = useHistory();
   const [writing, setWriting] = useState({})
   const [time, setTime] = useState(0)
   const [writingPage, setWritingPage] = useState(false)
@@ -16,20 +14,8 @@ const Writing = ({user, authService, writingRepository}) => {
     setWritingPage(!writingPage)
   }
 
-  // console.log("user: ", user)
-
-  // useEffect(() => {
-  //   // check user log in
-  //   authService.onAuthChange( user =>{
-  //     if(!user){
-  //       history.push('/')
-  //     }
-  //   })
-  // })
 
   useEffect(() => {
-    console.log("user: ", user)
-
     const currentHour = new Date().getHours()
     
     // get new subject every 12 hours
@@ -42,35 +28,36 @@ const Writing = ({user, authService, writingRepository}) => {
     }
 
   }, [writingRepository, time])
-  
 
-  
-  // console.log("count: ", count)
+
+
+  // console.log("time: ", time)
+  // console.log("writing: ", writing)
+  // console.log("writing obj: ", Object.entries(writing))
 
 
   
 
   return (
     <>
-      <Header authService={authService}></Header>
       {Object.keys(writing).length !==0 &&  
         <div className={styles.wrapper}>
           {writingPage === false ? 
+          <>
+            <Header authService={authService}></Header>
             <WritingCoverPage 
-              subjectId={writing.subjectId}
-              writingInfo={writing.info.cover}
-              subject={writing.info.subject}
-              count={writing.info.count}
+              subject={writing.subject}
+              subjectId={writing.info.subjectId}
+              writingCover={writing.info.cover}
               onWritingPage={onWritingPage}
               >
             </WritingCoverPage>
+          </>
             :
             <WritingPage
+              subject={writing.subject}
               subjectId={writing.subjectId}
-              writingInfo={writing.info.cover}
-              subject={writing.info.subject}
-              count={writing.info.count}
-              users={writing.info.users}
+              writings={writing.info.users}
               onWritingPage={onWritingPage}
             >
             </WritingPage> 

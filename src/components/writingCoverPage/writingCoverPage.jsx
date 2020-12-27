@@ -3,9 +3,9 @@ import styles from './writingCoverPage.module.css'
 import {BsChevronDoubleRight} from 'react-icons/bs'
 import { useHistory } from 'react-router-dom'
 
-const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage}) => {
-
+const WritingCoverPage = ({subject, subjectId, writingCover, onWritingPage}) => {
   const history = useHistory();
+
   const goToWrite = (event) =>{
     event.preventDefault()
 
@@ -16,18 +16,15 @@ const WritingCoverPage = ({subjectId,writingInfo, subject, count, onWritingPage}
         subject:subject }
       })
     }
-    console.log("subjectId: ", subjectId)
 
   return (
     <section className={styles.container}>
       <span className={styles.subject}>{subject}</span>
-      <span className={styles.writing}>{writingInfo.writing}</span>
+      <span className={styles.writing}>{writingCover.writing}</span>
       <div className={styles.writingInfo}>
-        <span className={styles.writer}>{writingInfo.writer}</span>
-        <span className={styles.title}>{`<${writingInfo.title}>`}</span>
+        <span className={styles.writer}>{writingCover.writer}</span>
+        <span className={styles.title}>{`<${writingCover.title}>`}</span>
       </div>
-
-
 
       <button className={styles.button} onClick={onWritingPage}>
         <BsChevronDoubleRight className={styles.buttonIcon}></BsChevronDoubleRight>

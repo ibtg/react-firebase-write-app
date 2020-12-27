@@ -8,20 +8,24 @@
   height: 100%;
 }
 
+.content {
+  border: 2px solid #f8bdbd;
+  margin-bottom: 2em;
+  padding: 1.4em 1.4em 2em 1.4em;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title {
   text-align: center;
   font-size: 1.6em;
   margin-bottom: 1.2em;
 }
 
-.content {
-  border: 2px solid #f8bdbd;
-  margin-bottom: 2em;
-  padding: 2em;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.writing {
+  font-size: 1.2em;
 }
 
 .writer {
