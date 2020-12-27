@@ -4,11 +4,13 @@ import styles from './main.module.css'
 import Header from '../header/header'
 
 
-const Main = ({authService}) => {
+const Main = ({user, authService}) => {
 
+  console.log("user: ", user)
+  console.log("authService: ", authService)
   const historyState = useHistory().state;
-  const history = useHistory();
-  const [userId, setUserId] = useState(historyState && historyState.id)
+  // const history = useHistory();
+  // const [userId, setUserId] = useState(historyState && historyState.id)
   
 
   // useEffect(() => {
@@ -18,25 +20,25 @@ const Main = ({authService}) => {
   //   }
   // }, [userId])
 
-  useEffect(() => {
-    // console.log("auth check effect")
-    authService.onAuthChange( user => {
+  // useEffect(() => {
+  //   // console.log("auth check effect")
+  //   authService.onAuthChange( user => {
       
-      // console.log("auth check")
-      if(user){
-        setUserId(user.uid)
-      }else{
-        // if user does not log in, return to login page
-        // console.log("push")
-        history.push('/')
-      }
-    })
+  //     // console.log("auth check")
+  //     if(user){
+  //       setUserId(user.uid)
+  //     }else{
+  //       // if user does not log in, return to login page
+  //       // console.log("push")
+  //       history.push('/')
+  //     }
+  //   })
 
-  }, [authService, history])
+  // }, [authService, history])
 
   return(
     <>
-      <Header authService={authService}></Header>
+
       Main
     </>
   )

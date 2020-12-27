@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import WritingPage from '../writingPage/writingPage'
 import WritingCoverPage from '../writingCoverPage/writingCoverPage'
 
-const Writing = ({authService, writingRepository}) => {
+const Writing = ({user, authService, writingRepository}) => {
   const history = useHistory();
   const [writing, setWriting] = useState({})
   const [time, setTime] = useState(0)
@@ -16,16 +16,20 @@ const Writing = ({authService, writingRepository}) => {
     setWritingPage(!writingPage)
   }
 
-  useEffect(() => {
-    // check user log in
-    authService.onAuthChange( user =>{
-      if(!user){
-        history.push('/')
-      }
-    })
-  })
+  // console.log("user: ", user)
+
+  // useEffect(() => {
+  //   // check user log in
+  //   authService.onAuthChange( user =>{
+  //     if(!user){
+  //       history.push('/')
+  //     }
+  //   })
+  // })
 
   useEffect(() => {
+    console.log("user: ", user)
+
     const currentHour = new Date().getHours()
     
     // get new subject every 12 hours
@@ -40,7 +44,7 @@ const Writing = ({authService, writingRepository}) => {
   }, [writingRepository, time])
   
 
-  console.log("writing: ", writing)
+  
   // console.log("count: ", count)
 
 

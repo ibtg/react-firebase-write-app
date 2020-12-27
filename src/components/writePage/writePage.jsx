@@ -40,13 +40,13 @@ const WritePage = ({authService, writingRepository}) => {
 
   useEffect(() => {
     // check user log in
-    authService.onAuthChange( user =>{
+    const loginCheck = authService.onAuthChange( user =>{
       if(!user){
         history.push('/')
       }
       setUser(user)
     })
-
+    return ()=>loginCheck()
   })
 
   
