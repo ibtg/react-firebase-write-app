@@ -51,8 +51,8 @@ const MyWriting = ({authService, writingRepository}) => {
 
   },[writingRepository, user])
 
-  console.log("myWriting: ", myWriting)
-  console.log("myWriting: obj", Object.entries(myWriting))
+  // console.log("myWriting: ", myWriting)
+  // console.log("myWriting: obj", Object.entries(myWriting))
 
   return (
     <>

@@ -17,10 +17,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.6em;
+  margin-bottom: 1.2em;
 }
 
 .writer {
   font-size: 1.1em;
   color: #acacac;
   margin-top: 1.4em;
+}
+
+.writing {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ellipsis line */
+  -webkit-box-orient: vertical;
 }
