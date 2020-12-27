@@ -1,20 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../header/header'
 import styles from './writePage.module.css'
 
-const WritePage = ({authService, writingRepository}) => {
+const WritePage = ({user, authService, writingRepository}) => {
 
-  // console.log("history: ", useHistory())
-  const [user, setUser] = useState('')
-  const subjectId = useHistory().location.state.subjectId;
-  const subject = useHistory().location.state.subject;
-
-  const history = useHistory();
+  const historyState = useHistory().location.state
+  const [subjectId, setSubjectId] = useState(historyState && historyState.subjectId)
+  const [subject, setSubject] = useState(historyState && historyState.subject)
+  const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
 
-  
   const onSubmit = (event) =>{
     event.preventDefault();
     if(textareaRef.current.value === ''){
@@ -22,42 +19,40 @@ const WritePage = ({authService, writingRepository}) => {
       return ;
     }
 
-    const writing = {
-      contentId: Date.now(),
-      subject:subject,
-      content:textareaRef.current.value,
-      username:user.displayName
-    }
+    // const writing = {
+    //   contentId: Date.now(),
+    //   subject:subject,
+    //   content:textareaRef.current.value,
+    //   username:user.displayName
+    // }
   
 
-    // console.log("saveWriting: ", userId, subjectId, writing )
-    // writingRepository.saveSubjectCount(subjectId, subjectCount+1)
-    writingRepository.saveWriting(user.uid, subjectId, writing )
+    // console.log("saveWriting: ", user.uid, subjectId, writing )
+    // // writingRepository.saveSubjectCount(subjectId, subjectCount+1)
+    // writingRepository.saveWriting(user.uid, subjectId, writing )
 
     formRef.current.reset();
   }
 
-
   useEffect(() => {
-    // check user log in
-    const loginCheck = authService.onAuthChange( user =>{
-      if(!user){
-        history.push('/')
-      }
-      setUser(user)
-    })
-    return ()=>loginCheck()
-  })
+    console.log("subjectId: ", subjectId === undefined )
+    console.log("subject: ", subject === undefined)
+    if(subjectId === undefined || subject === undefined){
+      alert('접근 권한이 없습니다.');
+      history.push({
+        pathname:'/main'
+      })
 
-  
+    }
+  }, [subjectId, subject, history])
 
-  // console.log("subjectId: ", subjectId)
-  // console.log("subject: ", subject)
+
+  console.log("historyState: ", historyState)
 
   return (
 
     <>
-      <Header authService={authService}></Header>
+      {/* <Header authService={authService}></Header>
       <section className={styles.container}>
         <form ref={formRef} className={styles.form} >
           <span className={styles.title} >{subject}</span>
@@ -67,7 +62,7 @@ const WritePage = ({authService, writingRepository}) => {
           </div>
           
         </form>
-      </section>
+      </section> */}
     </>
 
   )
