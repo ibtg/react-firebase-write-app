@@ -19,24 +19,25 @@ const WritePage = ({user, authService, writingRepository}) => {
       return ;
     }
 
-    // const writing = {
-    //   contentId: Date.now(),
-    //   subject:subject,
-    //   content:textareaRef.current.value,
-    //   username:user.displayName
-    // }
+    const writing = {
+      writingId: Date.now(),
+      writing:textareaRef.current.value,
+      subject:subject,
+      username:user.displayName
+    }
   
 
     // console.log("saveWriting: ", user.uid, subjectId, writing )
-    // // writingRepository.saveSubjectCount(subjectId, subjectCount+1)
-    // writingRepository.saveWriting(user.uid, subjectId, writing )
+    writingRepository.saveWriting(user.uid, subjectId, writing )
 
     formRef.current.reset();
+
+    history.push({
+      pathname:'/mywriting'
+    })
   }
 
   useEffect(() => {
-    console.log("subjectId: ", subjectId === undefined )
-    console.log("subject: ", subject === undefined)
     if(subjectId === undefined || subject === undefined){
       alert('접근 권한이 없습니다.');
       history.push({
@@ -47,12 +48,10 @@ const WritePage = ({user, authService, writingRepository}) => {
   }, [subjectId, subject, history])
 
 
-  console.log("historyState: ", historyState)
-
   return (
 
     <>
-      {/* <Header authService={authService}></Header>
+      <Header authService={authService}></Header>
       <section className={styles.container}>
         <form ref={formRef} className={styles.form} >
           <span className={styles.title} >{subject}</span>
@@ -62,7 +61,7 @@ const WritePage = ({user, authService, writingRepository}) => {
           </div>
           
         </form>
-      </section> */}
+      </section>
     </>
 
   )

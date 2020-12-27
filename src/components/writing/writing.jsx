@@ -6,7 +6,6 @@ import WritingCoverPage from '../writingCoverPage/writingCoverPage'
 
 const Writing = ({user, authService, writingRepository}) => {
   const [writing, setWriting] = useState({})
-  const [time, setTime] = useState(0)
   const [writingPage, setWritingPage] = useState(false)
 
   const onWritingPage = (event)=>{
@@ -16,22 +15,17 @@ const Writing = ({user, authService, writingRepository}) => {
 
 
   useEffect(() => {
-    const currentHour = new Date().getHours()
     
-    // get new subject every 12 hours
-    if(currentHour !== time){
-      const subjectList =  writingRepository.getWriting(writing=>{
-        setWriting(writing)
-        return ()=>subjectList();
-    })
-    setTime(currentHour)
-    }
+    const subjectList =  writingRepository.getWriting(writing=>{
+      setWriting(writing)
+      
+  })
+  return ()=>subjectList();
 
-  }, [writingRepository, time])
+  },[writingRepository])
 
 
 
-  // console.log("time: ", time)
   // console.log("writing: ", writing)
   // console.log("writing obj: ", Object.entries(writing))
 

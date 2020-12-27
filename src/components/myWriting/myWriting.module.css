@@ -26,12 +26,6 @@
   margin-bottom: 1.2em;
 }
 
-.writer {
-  font-size: 1.1em;
-  color: #acacac;
-  margin-top: 1.4em;
-}
-
 .writing {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,4 +33,12 @@
   display: -webkit-box;
   -webkit-line-clamp: 2; /* ellipsis line */
   -webkit-box-orient: vertical;
+  font-size: 1.1em;
+  white-space: pre-line;
+}
+
+.writer {
+  font-size: 1em;
+  color: #acacac;
+  margin-top: 1.4em;
 }

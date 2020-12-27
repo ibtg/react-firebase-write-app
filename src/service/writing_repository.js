@@ -19,9 +19,7 @@ class WritingRepository{
 
   getWriting(onUpdate){
     const ref = firebaseDatabase.ref('subjects')
-    // console.log("ref: ", ref)
     ref.once('value', snapshot =>{
-      // .StartAt(time).limitToFirst(1).
       const value = snapshot.val();
       const randIdx = parseInt(Math.random()*Object.keys(value).length) //get rand Index
       // console.log("randIdx : ", randIdx )
