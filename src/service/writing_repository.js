@@ -54,6 +54,24 @@ class WritingRepository{
     firebaseDatabase.ref(`users/${userId}/${subjectId}`).set(writing)
 
   }
+
+
+  // get my writing
+  getMyWriting(userId, onUpdate){
+    const ref = firebaseDatabase.ref(`users/${userId}`);
+
+    ref.once('value', snapshot =>{
+      const value = snapshot.val();
+
+      console.log("value: ", value)
+      // console.log("object lendght: ", Object.keys(value).length)
+      value && onUpdate(value)
+    })
+
+    return ()=>ref.off();
+
+  }
+
 }
 
 

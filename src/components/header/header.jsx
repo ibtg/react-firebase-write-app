@@ -31,6 +31,12 @@ const Header = ({authService}) => {
     })
   }
 
+  const goToMyWriting = () =>{
+    history.push({
+      pathname:'/mywriting'
+    })
+  }
+
 
   useEffect(() => {
     const date = new Date();
@@ -78,6 +84,7 @@ const Header = ({authService}) => {
         onLogout={onLogout} 
         goToSubjects={goToSubjects}
         goToWriting={goToWriting}
+        goToMyWriting={goToMyWriting}
       >
       </Sidebar>
     </>

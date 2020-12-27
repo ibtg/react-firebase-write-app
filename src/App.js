@@ -5,6 +5,8 @@ import Main from './components/main/main'
 import WritePage from './components/writePage/writePage'
 import Subjects from './components/subjects/subjects'
 import Writing from './components/writing/writing'
+import MyWriting from './components/myWriting/myWriting'
+
 
 function App({authService, writingRepository}) {
 
@@ -26,6 +28,9 @@ function App({authService, writingRepository}) {
           </Route>
           <Route exact path ="/writing">
             <Writing authService={authService} writingRepository={writingRepository}></Writing>
+          </Route>
+          <Route exact path ="/mywriting">
+          <MyWriting authService={authService} writingRepository={writingRepository}></MyWriting>
           </Route>
         </Switch>
       </BrowserRouter>
