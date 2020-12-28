@@ -6,7 +6,7 @@ import styles from './writePage.module.css'
 const WritePage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
-  const [subjectId, setSubjectId] = useState(historyState && historyState.subjectId)
+  // const [subjectId, setSubjectId] = useState(historyState && historyState.subjectId)
   const [subject, setSubject] = useState(historyState && historyState.subject)
   const history = useHistory()
   const formRef = useRef();
@@ -21,14 +21,16 @@ const WritePage = ({user, authService, writingRepository}) => {
 
     const writing = {
       writingId: Date.now(),
-      writing:textareaRef.current.value,
       subject:subject,
+      writing:textareaRef.current.value,
       username:user.displayName
     }
-  
+    
+    // console.log("writing: ", writing)
+    // console.log("subjectId: ", subjectId)
 
     // console.log("saveWriting: ", user.uid, subjectId, writing )
-    writingRepository.saveWriting(user.uid, subjectId, writing )
+    writingRepository.saveWriting(user.uid, subject, writing )
 
     formRef.current.reset();
 
@@ -38,14 +40,14 @@ const WritePage = ({user, authService, writingRepository}) => {
   }
 
   useEffect(() => {
-    if(subjectId === undefined || subject === undefined){
+    if(subject === undefined){
       alert('접근 권한이 없습니다.');
       history.push({
         pathname:'/main'
       })
 
     }
-  }, [subjectId, subject, history])
+  }, [subject, history])
 
 
   return (

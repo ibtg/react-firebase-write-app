@@ -15,13 +15,12 @@ const MyWriting = ({user, authService, writingRepository}) => {
   },[writingRepository, user])
 
   // console.log("myWriting: ", myWriting)
-  // console.log("myWriting: obj", Object.entries(myWriting))
 
   return (
     <>
       <Header authService={authService}></Header>
       <div className={styles.container}>
-        {Object.entries(myWriting).map((writing)=>(
+        {myWriting.map((writing)=>(
         <div key={writing[1].writingId} className={styles.content}>
           <h3 className={styles.title}>{writing[1].subject}</h3>
           <p className={styles.writing}>{  `${writing[1].writing}`.replace("\\n", "\n")}</p>
