@@ -28,7 +28,6 @@ const Subjects = ({authService, writingRepository}) => {
           {subjects && Object.entries(subjects).map(subject => 
           <Subject 
             key={subject[1].subjectId} 
-            subjectId={subject[1].subjectId} 
             subject={subject[0]} 
             count={Object.keys(subject[1].users).length}>
           </Subject>)}

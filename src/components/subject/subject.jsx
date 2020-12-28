@@ -10,7 +10,6 @@ const Subject = ({subjectId, subject, count}) => {
     history.push({
       pathname:'/writepage',
       state:{
-        subjectId:subjectId , 
         subject:subject
         }
     })

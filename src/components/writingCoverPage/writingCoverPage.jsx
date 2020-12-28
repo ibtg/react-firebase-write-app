@@ -12,7 +12,6 @@ const WritingCoverPage = ({subject, subjectId, writingCover, onWritingPage}) => 
     history.push({
       pathname:'/writepage',
       state:{
-        subjectId:subjectId , 
         subject:subject }
       })
     }
