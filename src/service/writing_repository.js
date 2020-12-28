@@ -79,6 +79,21 @@ class WritingRepository{
 
   }
 
+  getSearch(subject, onUpdate){
+    const ref = firebaseDatabase.ref(`subjects/${subject}/users`)
+    ref.once('value', snapshot =>{
+
+      const value = snapshot.val();
+      // console.log("value: ", value)
+
+    
+      value && onUpdate(value)
+
+      
+    })
+    return ()=>ref.off();
+  }
+
 }
 
 

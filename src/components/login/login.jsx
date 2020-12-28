@@ -8,7 +8,7 @@ const Login = ({authService}) =>{
 
   const goToMain = (userId) =>{
     history.push({
-      pathname:'/main',
+      pathname:'/writing',
       state:{id: userId}
     })
 

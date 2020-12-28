@@ -5,7 +5,6 @@ import Sidebar from '../sidebar/sidebar'
 import { useHistory } from 'react-router-dom'
 
 
-
 const Header = ({authService}) => {
   const [dateInfo, setDateInfo] = useState({})
   const [sidebar, setSidebar] = useState(false)
@@ -35,6 +34,18 @@ const Header = ({authService}) => {
     history.push({
       pathname:'/mywriting'
     })
+  }
+
+  const onSubmit = (event) =>{
+    event.preventDefault()
+    const subject = event.target.keyword.value
+    history.push({
+      pathname:`/search`,
+      state:{
+        subject:subject
+      }
+    })
+
   }
 
 
@@ -76,7 +87,9 @@ const Header = ({authService}) => {
     <>
       <header className={styles.header}>
         <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
-        <span className={styles.date}>{`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일, ${dateInfo.hour}`}</span>
+        <span className={styles.date}>
+          {`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일, ${dateInfo.hour}`}
+        </span>
       </header>
       <Sidebar 
         sidebar={sidebar} 
@@ -85,6 +98,7 @@ const Header = ({authService}) => {
         goToSubjects={goToSubjects}
         goToWriting={goToWriting}
         goToMyWriting={goToMyWriting}
+        onSubmit={onSubmit}
       >
       </Sidebar>
     </>

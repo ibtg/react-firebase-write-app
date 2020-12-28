@@ -6,6 +6,7 @@ import WritePage from './components/writePage/writePage'
 import Subjects from './components/subjects/subjects'
 import Writing from './components/writing/writing'
 import MyWriting from './components/myWriting/myWriting'
+import Search from './components/search/search'
 import Auth from './hoc/auth'
 
 function App({authService, writingRepository}) {
@@ -18,10 +19,11 @@ function App({authService, writingRepository}) {
             <Login authService={authService}></Login>
           </Route>
           <Route exact path="/main" component={Auth(Main, authService, writingRepository)}></Route>
-          <Route exact path ="/writing" component={Auth(Writing, authService, writingRepository )}></Route>
+          <Route exact path="/writing" component={Auth(Writing, authService, writingRepository )}></Route>
           <Route exact path="/writepage/:subject" component={Auth(WritePage, authService, writingRepository )}></Route>
           <Route exact path="/subjects" component={Auth(Subjects, authService, writingRepository )}></Route>
-          <Route exact path ="/mywriting" component={Auth(MyWriting, authService, writingRepository )}></Route>
+          <Route exact path="/mywriting" component={Auth(MyWriting, authService, writingRepository )}></Route>
+          <Route exact path="/search" component={Auth(Search, authService, writingRepository)}></Route>  
         </Switch>
       </BrowserRouter>
       
