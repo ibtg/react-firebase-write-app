@@ -8,7 +8,7 @@ const Subject = ({subjectId, subject, count}) => {
     event.preventDefault()
 
     history.push({
-      pathname:'/writepage',
+      pathname:`/writepage/${subject}`,
       state:{
         subject:subject
         }

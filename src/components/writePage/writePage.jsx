@@ -6,8 +6,8 @@ import styles from './writePage.module.css'
 const WritePage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
-  // const [subjectId, setSubjectId] = useState(historyState && historyState.subjectId)
   const [subject, setSubject] = useState(historyState && historyState.subject)
+  const [writing, setWriting] = useState(historyState ? historyState.writing : '')
   const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
@@ -39,6 +39,10 @@ const WritePage = ({user, authService, writingRepository}) => {
     })
   }
 
+  const handleChange = (event) =>{
+    setWriting(event.currentTarget.value)
+  }
+
   useEffect(() => {
     if(subject === undefined){
       alert('접근 권한이 없습니다.');
@@ -49,7 +53,7 @@ const WritePage = ({user, authService, writingRepository}) => {
     }
   }, [subject, history])
 
-
+  
   return (
 
     <>
@@ -57,9 +61,21 @@ const WritePage = ({user, authService, writingRepository}) => {
       <section className={styles.container}>
         <form ref={formRef} className={styles.form} >
           <span className={styles.title} >{subject}</span>
-          <textarea ref={textareaRef} className={styles.content} minLength="1" placeholder='당신의 생각을 들려주세요'></textarea>
+          <textarea 
+            ref={textareaRef} 
+            className={styles.content}
+            minLength="1" 
+            placeholder='당신의 생각을 들려주세요'
+            value={writing}
+            onChange={handleChange}
+            >
+            
+            {writing}
+          </textarea>
           <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={onSubmit}>작성하기</button>
+            <button className={styles.button} onClick={onSubmit}>
+              {writing ? '수정하기' : '작성하기'}
+            </button>
           </div>
           
         </form>

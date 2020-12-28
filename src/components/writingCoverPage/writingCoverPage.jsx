@@ -10,7 +10,7 @@ const WritingCoverPage = ({subject, subjectId, writingCover, onWritingPage}) => 
     event.preventDefault()
 
     history.push({
-      pathname:'/writepage',
+      pathname:`/writepage/${subject}`,
       state:{
         subject:subject }
       })

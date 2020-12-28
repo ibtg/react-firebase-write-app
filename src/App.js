@@ -19,7 +19,7 @@ function App({authService, writingRepository}) {
           </Route>
           <Route exact path="/main" component={Auth(Main, authService, writingRepository)}></Route>
           <Route exact path ="/writing" component={Auth(Writing, authService, writingRepository )}></Route>
-          <Route exact path="/writepage" component={Auth(WritePage, authService, writingRepository )}></Route>
+          <Route exact path="/writepage/:subject" component={Auth(WritePage, authService, writingRepository )}></Route>
           <Route exact path="/subjects" component={Auth(Subjects, authService, writingRepository )}></Route>
           <Route exact path ="/mywriting" component={Auth(MyWriting, authService, writingRepository )}></Route>
         </Switch>
