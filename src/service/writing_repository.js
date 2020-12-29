@@ -92,6 +92,27 @@ class WritingRepository{
     return ()=>ref.off();
   }
 
+  getLike(userId, onUpdate){
+    const ref = firebaseDatabase.ref(`users/${userId}/likes/`)
+    
+    ref.once('value', snapshot =>{
+
+      const value = snapshot.val();
+      onUpdate(value)
+
+      
+    })
+    return ()=>ref.off();
+
+  }
+
+  // add to like user's writing
+  addToLike(userId, subject, writing){
+    // save as user
+    firebaseDatabase.ref(`users/${userId}/likes/${subject}`).set(writing)
+
+  }
+
 }
 
 

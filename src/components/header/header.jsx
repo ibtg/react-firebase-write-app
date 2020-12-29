@@ -14,8 +14,10 @@ const Header = ({authService}) => {
     setSidebar(!sidebar)
   }
 
-  const onLogout = () =>{
-    authService.logout();
+  const goToWriting = () =>{
+    history.push({
+      pathname:'/writing'
+    })
   }
 
   const goToSubjects = () =>{
@@ -24,17 +26,30 @@ const Header = ({authService}) => {
     })
   }
 
-  const goToWriting = () =>{
-    history.push({
-      pathname:'/writing'
-    })
-  }
-
   const goToMyWriting = () =>{
     history.push({
       pathname:'/mywriting'
     })
   }
+
+  const goToLike = () =>{
+    history.push({
+      pathname:'/like'
+    })
+  }
+
+
+  const onLogout = () =>{
+    authService.logout();
+  }
+
+
+
+
+
+
+
+
 
   const onSubmit = (event) =>{
     event.preventDefault()
@@ -98,6 +113,7 @@ const Header = ({authService}) => {
         goToSubjects={goToSubjects}
         goToWriting={goToWriting}
         goToMyWriting={goToMyWriting}
+        goToLike={goToLike}
         onSubmit={onSubmit}
       >
       </Sidebar>
