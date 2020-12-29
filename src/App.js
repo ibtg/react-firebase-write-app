@@ -8,7 +8,8 @@ import Writing from './components/writing/writing'
 import MyWriting from './components/myWriting/myWriting'
 import Search from './components/search/search'
 import WritingPage from './components/writingPage/writingPage'
-import Like from './components/like/like'
+import Favorite from './components/favorite/favorite'
+import FavoritePage from './components/favoritePage/favoritePage'
 import Auth from './hoc/auth'
 
 function App({authService, writingRepository}) {
@@ -27,7 +28,8 @@ function App({authService, writingRepository}) {
           <Route exact path="/mywriting" component={Auth(MyWriting, authService, writingRepository )}></Route>
           <Route exact path="/search/:subject" component={Auth(Search, authService, writingRepository)}></Route>
           <Route exact path="/writingPage" component={Auth(WritingPage, authService, writingRepository)}></Route>  
-          <Route exact path="/like" component={Auth(Like, authService, writingRepository )}></Route>
+          <Route exact path="/favorite" component={Auth(Favorite, authService, writingRepository )}></Route>
+          <Route exact path="/favoritePage/:subject" component={Auth(FavoritePage, authService, writingRepository )}></Route>
         </Switch>
       </BrowserRouter>
       

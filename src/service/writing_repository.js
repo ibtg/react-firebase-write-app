@@ -92,25 +92,33 @@ class WritingRepository{
     return ()=>ref.off();
   }
 
-  getLike(userId, onUpdate){
-    const ref = firebaseDatabase.ref(`users/${userId}/likes/`)
-    
-    ref.once('value', snapshot =>{
+  getFavorite(userId, onUpdate){
+    const ref = firebaseDatabase.ref(`users/${userId}/favorite`)
 
-      const value = snapshot.val();
-      onUpdate(value)
+    ref.orderByChild('writingId').once('value', snapshot =>{
 
-      
+      const value = snapshot.val()
+      if (value === null){
+        onUpdate({})
+      }else{
+        const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
+        orderedValue && onUpdate((orderedValue))
+      }
+
     })
     return ()=>ref.off();
+  }
+
+  // add to user's favorite writing
+  addToFavorite(userId, writingId, writing){
+    // save as user
+    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).set(writing)
 
   }
 
-  // add to like user's writing
-  addToLike(userId, subject, writing){
-    // save as user
-    firebaseDatabase.ref(`users/${userId}/likes/${subject}`).set(writing)
-
+  // remove from favorite list
+  removeToFavorite(userId, writingId){
+    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).remove()
   }
 
 }

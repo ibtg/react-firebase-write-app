@@ -32,9 +32,9 @@ const Header = ({authService}) => {
     })
   }
 
-  const goToLike = () =>{
+  const goToFavorite = () =>{
     history.push({
-      pathname:'/like'
+      pathname:'/favorite'
     })
   }
 
@@ -42,13 +42,6 @@ const Header = ({authService}) => {
   const onLogout = () =>{
     authService.logout();
   }
-
-
-
-
-
-
-
 
 
   const onSubmit = (event) =>{
@@ -113,7 +106,7 @@ const Header = ({authService}) => {
         goToSubjects={goToSubjects}
         goToWriting={goToWriting}
         goToMyWriting={goToMyWriting}
-        goToLike={goToLike}
+        goToFavorite={goToFavorite}
         onSubmit={onSubmit}
       >
       </Sidebar>
