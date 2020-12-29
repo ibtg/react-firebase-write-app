@@ -17,7 +17,7 @@ const Subjects = ({authService, writingRepository}) => {
 
   }, [writingRepository])
 
-  // console.log("subjects: ", subjects)
+  console.log("subjects: ", subjects)
   // console.log("subjects entires: ", Object.entries(subjects))
 
   return (

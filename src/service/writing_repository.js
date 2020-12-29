@@ -9,7 +9,7 @@ class WritingRepository{
     ref.once('value', snapshot =>{
       const value = snapshot.val();
 
-      // console.log("value: ", value)
+      console.log("value: ", value)
       // console.log("object lendght: ", Object.keys(value).length)
       value && onUpdate(value)
     })
