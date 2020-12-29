@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styles from './writing.module.css';
 import Header from '../header/header'
-import WritingPage from '../writingPage/writingPage'
 import WritingCoverPage from '../writingCoverPage/writingCoverPage'
 
 const Writing = ({user, authService, writingRepository}) => {
   const [writing, setWriting] = useState({})
-  const [writingPage, setWritingPage] = useState(false)
-
-  const onWritingPage = (event)=>{
-    event.preventDefault();
-    setWritingPage(!writingPage)
-  }
-
 
   useEffect(() => {
     
@@ -34,30 +26,14 @@ const Writing = ({user, authService, writingRepository}) => {
 
   return (
     <>
-      {Object.keys(writing).length !==0 &&  
-        <div className={styles.wrapper}>
-          {writingPage === false ? 
-          <>
-            <Header authService={authService}></Header>
-            <WritingCoverPage 
-              subject={writing.subject}
-              subjectId={writing.info.subjectId}
-              writingCover={writing.info.cover}
-              onWritingPage={onWritingPage}
-              >
-            </WritingCoverPage>
-          </>
-            :
-            <WritingPage
-              subject={writing.subject}
-              subjectId={writing.subjectId}
-              writings={writing.info.users}
-              onWritingPage={onWritingPage}
-            >
-            </WritingPage> 
-          }
-        </div>
-      }
+      <Header authService={authService}></Header>
+      {Object.keys(writing).length !==0 &&
+        <WritingCoverPage 
+          subject={writing.subject}
+          writingCover={writing.info.cover}
+        >
+        </WritingCoverPage>
+    }
     </>
   )
 }

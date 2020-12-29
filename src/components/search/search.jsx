@@ -6,19 +6,26 @@ import Header from '../header/header'
 const Search = ({authService, writingRepository}) => {
   
   const historyState = useHistory().location.state
-  const [subject, setSubject] = useState(historyState && historyState.subject)
+  
+  // const [subject, setSubject] = useState(historyState && historyState.subject)
   const [writings, setWritings] = useState({})
 
   useEffect(() => {
     
-    const writingList =  writingRepository.getSearch(subject, (results)=>{
+    console.log("historyState: ", historyState)
+    // if(historyState === undefined){
+    //   // return 404 page
+    // }
+
+    const writingList =  writingRepository.getSearch(historyState.subject, (results)=>{
       setWritings(results)
       
   })
   return ()=>writingList();
 
-  },[writingRepository ,subject])
+  },[writingRepository , historyState])
 
+  // console.log("subject: ", subject)
   // console.log("writings: ", writings)
   // console.log("writings object: ", Object.entries(writings))
   return (
