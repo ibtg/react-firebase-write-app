@@ -43,37 +43,36 @@ class WritingRepository{
     firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).set(writing)
 
     // save as user
-    firebaseDatabase.ref(`users/${userId}/${subject}`).set(writing)
+    firebaseDatabase.ref(`users/${userId}/subjects/${subject}`).set(writing)
+
+  }
+
+  deleteWriting(userId, subject){
+    // console.log("saving")
+    // console.log(userId, subject, writing)
+
+    // save in subject
+    firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).remove()
+
+    // save as user
+    firebaseDatabase.ref(`users/${userId}/subjects/${subject}`).remove()
 
   }
 
 
   // get my writing
   getMyWriting(userId, onUpdate){
-    const ref = firebaseDatabase.ref(`users/${userId}`)
+    const ref = firebaseDatabase.ref(`users/${userId}/subjects`)
 
     ref.orderByChild('writingId').once('value', snapshot =>{
-      // const key = snapshot.key
-      // const value = snapshot.val();
 
-      const orderedObj = {}
-      snapshot.forEach((childSnaphsot)=>{
-        // console.log("childSnaphsot: ",childSnaphsot.val().writingId)
-        // console.log("childSnaphsot: ", childSnaphsot.val())
-        orderedObj[childSnaphsot.val().writingId] = childSnaphsot.val()
-
-      })
-      
-      // const value = snapshot.val();
-      // console.log("value: ",value)
-
-
-      // const orderedValue = Object.keys(value).reverse().reduce((result ,key)=>{
-      //   result[key] = value[key]
-      //   return result
-      // }, {})
-      // console.log("object order: ", orderedValue)
-      orderedObj && onUpdate(Object.entries(orderedObj).reverse())
+      const value = snapshot.val()
+      if (value === null){
+        onUpdate({})
+      }else{
+        const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].writingId - prev[1].writingId)
+        orderedValue && onUpdate((orderedValue))
+      }
     })
 
     return ()=>ref.off();

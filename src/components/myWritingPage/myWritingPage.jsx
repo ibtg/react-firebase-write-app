@@ -1,12 +1,13 @@
 import React, {useRef, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
+import styles from './myWritingPage.module.css'
 import Header from '../header/header'
-import styles from './writePage.module.css'
 
-const WritePage = ({user, authService, writingRepository}) => {
+const MyWritingPage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
   const subject = historyState && historyState.subject
+  const [writing, setWriting] = useState(historyState ? historyState.writing : '')
   const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
@@ -24,9 +25,7 @@ const WritePage = ({user, authService, writingRepository}) => {
       writing:textareaRef.current.value,
       username:user.displayName
     }
-    
-    // console.log("writing: ", writing)
-    // console.log("subjectId: ", subjectId)
+
     writingRepository.saveWriting(user.uid, subject, writing)
 
     formRef.current.reset();
@@ -49,19 +48,7 @@ const WritePage = ({user, authService, writingRepository}) => {
     setWriting(event.currentTarget.value)
   }
 
-  useEffect(() => {
-    if(subject === undefined){
-      alert('접근 권한이 없습니다.');
-      history.push({
-        pathname:'/main'
-      })
-
-    }
-  }, [subject, history])
-
-  
   return (
-
     <>
       <Header authService={authService}></Header>
       <section className={styles.container}>
@@ -73,19 +60,26 @@ const WritePage = ({user, authService, writingRepository}) => {
             className={styles.content}
             minLength="1" 
             placeholder='당신의 생각을 들려주세요'
+            value={writing}
+            onChange={handleChange}
             >
+            {writing}
           </textarea>
           <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={onSubmit}>
-              작성하기
-            </button>
-          </div>
 
+            <div className="buttonContainer">
+              <button className={styles.button} onClick={onDelete}>
+                삭제하기
+              </button>
+              <button className={styles.button} onClick={onSubmit}>
+                수정하기
+              </button>
+            </div>     
+          </div>
         </form>
       </section>
     </>
-
   )
 }
 
-export default WritePage
+export default MyWritingPage

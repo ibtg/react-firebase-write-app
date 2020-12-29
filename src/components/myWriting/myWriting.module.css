@@ -1,8 +1,7 @@
 .container {
-  margin-top: 3.2em;
   display: flex;
   flex-direction: column;
-  margin: 0 25%;
+  align-items: center;
   padding-top: 60px;
   padding-bottom: 1.2em;
   height: 100%;
@@ -27,12 +26,6 @@
 }
 
 .writing {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* ellipsis line */
-  -webkit-box-orient: vertical;
   font-size: 1.1em;
   white-space: pre-line;
 }
@@ -41,4 +34,12 @@
   font-size: 1em;
   color: #acacac;
   margin-top: 1.4em;
+}
+
+.noWriting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.2em;
 }
