@@ -30,9 +30,9 @@ const WritingCoverPage = ({subject, writingCover}) => {
   return (
     <section className={styles.container}>
       <span className={styles.subject}>{subject}</span>
-      <span className={styles.writing}>{writingCover.writing}</span>
+      <p className={styles.writing}>{writingCover.writing}</p>
       <div className={styles.writingInfo}>
-        <p className={styles.writer}>{writingCover.writer}</p>
+        <span className={styles.writer}>{writingCover.writer}</span>
         <span className={styles.title}>{`<${writingCover.title}>`}</span>
       </div>
 

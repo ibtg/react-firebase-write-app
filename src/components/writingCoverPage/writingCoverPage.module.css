@@ -1,53 +1,38 @@
 .container {
-  margin-top: 3.2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 25%;
-  padding-top: 60px;
-  padding-bottom: 1.2em;
+  padding-top: 3.2em;
   height: 100%;
+  width: 100%;
 }
 
 .subject {
   font-size: 2.4em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1rem;
   color: #333;
 }
 
 .writing {
   font-size: 1.3em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1rem;
   color: #333;
   white-space: pre-wrap;
   text-align: center;
+  line-height: 1.5em;
 }
 
 .writingInfo {
   color: #acacaa;
   display: flex;
   flex-direction: row;
-  margin-bottom: 1.2em;
+  margin-bottom: 1rem;
   font-size: 1.1em;
 }
 
 .writer {
   margin-right: 0.2em;
-}
-
-.write {
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #f8bdbd;
-  margin-bottom: 2em;
-  cursor: pointer;
-  color: #333;
-  font-family: inherit;
-  position: fixed;
-  bottom: 6rem;
-  font-size: 1.2em;
 }
 
 .button {
@@ -62,4 +47,18 @@
 .buttonIcon {
   transform: translateY(0.2em);
   margin-right: 0.1em;
+}
+
+.write {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f8bdbd;
+  margin-bottom: 1.4em;
+  cursor: pointer;
+  color: #333;
+  font-family: inherit;
+  position: fixed;
+  bottom: 6rem;
+  font-size: 1.2em;
 }
