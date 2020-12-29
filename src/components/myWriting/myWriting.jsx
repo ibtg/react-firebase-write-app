@@ -12,8 +12,9 @@ const MyWriting = ({user, authService, writingRepository}) => {
   const onEdit = (event) =>{
     event.preventDefault();
     const childeNodes = event.currentTarget.childNodes
+    console.log("childeNodes: ",childeNodes[1].innerHTML)
     const subject = childeNodes[0].innerText
-    const writing = childeNodes[1].innerText
+    const writing = childeNodes[1].innerHTML
 
     history.push({
       pathname:`/writepage/${subject}`,
@@ -33,7 +34,7 @@ const MyWriting = ({user, authService, writingRepository}) => {
 
   },[writingRepository, user])
 
-  // console.log("myWriting: ", myWriting)
+  console.log("myWriting: ", myWriting)
 
   return (
     <>

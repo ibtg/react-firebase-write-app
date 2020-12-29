@@ -36,6 +36,7 @@ class WritingRepository{
 
   // save user's writing
   saveWriting(userId, subject, writing){
+    // console.log("saving")
     // console.log(userId, subject, writing)
 
     // save in subject

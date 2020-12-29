@@ -45,6 +45,7 @@
   font-family: inherit;
   resize: none;
   color: #333;
+  white-space: pre-wrap;
 }
 
 .content::placeholder {
