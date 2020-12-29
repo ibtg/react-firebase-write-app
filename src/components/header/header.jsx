@@ -39,7 +39,6 @@ const Header = ({authService}) => {
   const onSubmit = (event) =>{
     event.preventDefault()
     const subject = event.target.keyword.value
-    console.log("submit subject: ", subject)
     history.push({
       pathname:`/search/${subject}`,
       state:{
