@@ -32,7 +32,7 @@ const WritingCoverPage = ({subject, writingCover}) => {
       <span className={styles.subject}>{subject}</span>
       <span className={styles.writing}>{writingCover.writing}</span>
       <div className={styles.writingInfo}>
-        <span className={styles.writer}>{writingCover.writer}</span>
+        <p className={styles.writer}>{writingCover.writer}</p>
         <span className={styles.title}>{`<${writingCover.title}>`}</span>
       </div>
 
