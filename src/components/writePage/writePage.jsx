@@ -36,18 +36,6 @@ const WritePage = ({user, authService, writingRepository}) => {
     })
   }
 
-  const onDelete = (event)=>{
-    event.preventDefault();
-    writingRepository.deleteWriting(user.uid, subject)
-    history.push({
-      pathname:'/mywriting'
-    })
-
-  }
-
-  const handleChange = (event) =>{
-    setWriting(event.currentTarget.value)
-  }
 
   useEffect(() => {
     if(subject === undefined){
