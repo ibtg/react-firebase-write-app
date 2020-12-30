@@ -16,7 +16,7 @@ function App({authService, writingRepository}) {
 
   return (
     <div className={styles.app}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/">
             <Login authService={authService}></Login>
