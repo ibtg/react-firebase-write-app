@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './header.module.css'
 import {FaBars} from 'react-icons/fa'
 import Sidebar from '../sidebar/sidebar'
@@ -9,6 +9,8 @@ const Header = ({authService}) => {
   const [dateInfo, setDateInfo] = useState({})
   const [sidebar, setSidebar] = useState(false)
   const history = useHistory()
+  const headerRef = useRef()
+
 
   const onClickMenu = () => {
     setSidebar(!sidebar)
@@ -44,17 +46,7 @@ const Header = ({authService}) => {
   }
 
 
-  const onSubmit = (event) =>{
-    event.preventDefault()
-    const subject = event.target.keyword.value
-    history.push({
-      pathname:`/search/${subject}`,
-      state:{
-        subject:subject
-      }
-    })
 
-  }
 
 
   useEffect(() => {
@@ -91,9 +83,10 @@ const Header = ({authService}) => {
   },[])
 
 
+  // console.log("class: ",  headerRef.current && headerRef.current.classList[1] )
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} ref={headerRef}>
         <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
         <span className={styles.date}>
           {`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일, ${dateInfo.hour}`}
@@ -107,7 +100,6 @@ const Header = ({authService}) => {
         goToWriting={goToWriting}
         goToMyWriting={goToMyWriting}
         goToFavorite={goToFavorite}
-        onSubmit={onSubmit}
       >
       </Sidebar>
     </>

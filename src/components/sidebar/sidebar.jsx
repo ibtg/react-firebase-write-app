@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './sidebar.module.css'
 import {AiOutlineClose} from 'react-icons/ai'
 import {BiSearch} from 'react-icons/bi'
+import { useHistory } from 'react-router-dom'
 
-const Sidebar = ({onClickMenu, sidebar, onLogout, goToSubjects, goToWriting, goToMyWriting, goToFavorite, onSubmit}) => {
+const Sidebar = ({onClickMenu, sidebar, onLogout, goToSubjects, goToWriting, goToMyWriting, goToFavorite}) => {
+  const inputRef = useRef();
+  const history = useHistory()
+
+  const onSubmit = (event) =>{
+    event.preventDefault()
+    const subject = inputRef.current.value
+    if(subject === ''){
+      alert('검색어를 입력해주세요.')
+      return;
+    }
+    inputRef.current.value=""
+    history.push({
+      pathname:`/search/${subject}`,
+      state:{
+        subject:subject
+      }
+    })
+
+  }
+  
   return (
     <section className={ sidebar ?  `${styles.sidebar} ${styles.on}` : styles.sidebar} >
         <div className={styles.closeContainer}>
@@ -20,7 +41,11 @@ const Sidebar = ({onClickMenu, sidebar, onLogout, goToSubjects, goToWriting, goT
           <div className={styles.searchBox}>
             <BiSearch className={styles.search}></BiSearch>
             <form onSubmit={onSubmit} >
-              <input className={styles.searchInput} name="keyword" type="text" placeholder="무엇을 찾고 계시나요?"/>
+              <input
+                ref={inputRef}
+                className={styles.searchInput} 
+                type="text" 
+                placeholder="무엇을 찾고 계시나요?"/>
             </form>
             
           </div>
