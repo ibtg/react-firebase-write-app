@@ -1,10 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import styles from './writing.module.css';
 import Header from '../header/header'
-import WritingCoverPage from '../writingCoverPage/writingCoverPage'
+import {BsChevronDoubleRight} from 'react-icons/bs'
+import { useHistory } from 'react-router-dom'
 
-const Writing = ({user, authService, writingRepository}) => {
+const Writing = ({authService, writingRepository}) => {
   const [writing, setWriting] = useState({})
+  const history = useHistory();
+
+  const goToWrite = (event) =>{
+    event.preventDefault()
+
+    history.push({
+      pathname:`/writepage/${writing.subject}`,
+      state:{
+        subject:writing.subject }
+      })
+    }
+
+  const goToWritingPage = (event) =>{
+    event.preventDefault()
+
+    history.push({
+      pathname:`/search/${writing.subject}`,
+      state:{
+        subject:writing.subject }
+      })
+    }
+
+
 
   useEffect(() => {
     
@@ -17,22 +41,25 @@ const Writing = ({user, authService, writingRepository}) => {
   },[writingRepository])
 
 
-
-  // console.log("writing: ", writing)
-  // console.log("writing obj: ", Object.entries(writing))
-
-
-  
-
   return (
     <>
       <Header authService={authService}></Header>
       {Object.keys(writing).length !==0 &&
-        <WritingCoverPage 
-          subject={writing.subject}
-          writingCover={writing.info.cover}
-        >
-        </WritingCoverPage>
+        <section className={styles.container}>
+          <h2 className={styles.subject}>{writing.subject}</h2>
+          <p className={styles.writing}>{writing.info.cover.writing}</p>
+          <div className={styles.writingInfo}>
+            <span className={styles.writer}>{writing.info.cover.writer}</span>
+            <span className={styles.title}>{`<${writing.info.cover.title}>`}</span>
+          </div>
+
+          <button className={styles.button}>
+            <BsChevronDoubleRight className={styles.buttonIcon}></BsChevronDoubleRight>
+            <span className={styles.buttonText} onClick={goToWritingPage}>넘겨서 보기</span>
+          </button>
+
+          <button className={styles.write} onClick={goToWrite}>나의 글 쓰기</button>
+        </section>
     }
     </>
   )

@@ -6,10 +6,9 @@ const Login = ({authService}) =>{
   
   const history = useHistory();
 
-  const goToMain = (userId) =>{
+  const goToWriting = () =>{
     history.push({
       pathname:'/writing',
-      state:{id: userId}
     })
 
   }
@@ -17,13 +16,13 @@ const Login = ({authService}) =>{
   const onLogin = (event) =>{
     authService//
     .login(event.currentTarget.name)
-    .then(data=>goToMain(data.user.uid))
+    .then(data=>goToWriting(data.user.uid))
     // console.log(event.currentTarget.name)
   }
 
   useEffect(() => {
     authService.onAuthChange(user =>{
-      user && goToMain(user.uid)
+      user && goToWriting(user.uid)
     })
 
   })
