@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-firebase-write-app/static/css/main.77214867.chunk.css",
-    "main.js": "/react-firebase-write-app/static/js/main.c70c8214.chunk.js",
-    "main.js.map": "/react-firebase-write-app/static/js/main.c70c8214.chunk.js.map",
+    "main.js": "/react-firebase-write-app/static/js/main.7674f8f1.chunk.js",
+    "main.js.map": "/react-firebase-write-app/static/js/main.7674f8f1.chunk.js.map",
     "runtime-main.js": "/react-firebase-write-app/static/js/runtime-main.53a942e5.js",
     "runtime-main.js.map": "/react-firebase-write-app/static/js/runtime-main.53a942e5.js.map",
     "static/js/2.8835f247.chunk.js": "/react-firebase-write-app/static/js/2.8835f247.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.53a942e5.js",
     "static/js/2.8835f247.chunk.js",
     "static/css/main.77214867.chunk.css",
-    "static/js/main.c70c8214.chunk.js"
+    "static/js/main.7674f8f1.chunk.js"
   ]
 }
