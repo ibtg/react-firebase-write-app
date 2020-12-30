@@ -8,9 +8,6 @@ class WritingRepository{
 
     ref.once('value', snapshot =>{
       const value = snapshot.val();
-
-      console.log("value: ", value)
-      // console.log("object lendght: ", Object.keys(value).length)
       value && onUpdate(value)
     })
 
@@ -20,14 +17,9 @@ class WritingRepository{
   getWriting(onUpdate){
     const ref = firebaseDatabase.ref('subjects')
     ref.once('value', snapshot =>{
-      // .StartAt(time).limitToFirst(1).
       const value = snapshot.val();
       const randIdx = parseInt(Math.random()*Object.keys(value).length) //get rand Index
-      // console.log("randIdx : ", randIdx )
-      // console.log("value: ", value)
-      
       const writing = Object.entries(value)[randIdx]
-      // console.log("writing: ", writing)
       value && onUpdate({subject:writing[0], info:writing[1] })
     })
 
@@ -36,8 +28,6 @@ class WritingRepository{
 
   // save user's writing
   saveWriting(userId, subject, writing){
-    // console.log("saving")
-    // console.log(userId, subject, writing)
 
     // save in subject
     firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).set(writing)
@@ -48,9 +38,7 @@ class WritingRepository{
   }
 
   deleteWriting(userId, subject){
-    // console.log("saving")
-    // console.log(userId, subject, writing)
-
+    
     // save in subject
     firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).remove()
 
@@ -103,6 +91,7 @@ class WritingRepository{
         onUpdate({})
       }else{
         const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
+        console.log("orderedValue: ", orderedValue)
         orderedValue && onUpdate((orderedValue))
       }
 

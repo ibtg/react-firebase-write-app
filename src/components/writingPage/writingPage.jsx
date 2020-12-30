@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom'
 
 const WritingPage = ({user, authService, writingRepository}) => {
 
-  // console.log("writings: ", writings)
-  // console.log("writings entries: ", Object.entries(writings))
   const historyState = useHistory().location.state
   const history = useHistory();
   const subject = historyState && historyState.subject

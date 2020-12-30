@@ -33,7 +33,7 @@ const MyWriting = ({user, authService, writingRepository}) => {
 
   return (
     <>
-      <Header></Header>
+      <Header authService={authService}></Header>
       <div className={styles.container}>
         {Object.keys(myWritings).length !== 0 ?
         myWritings.map((myWriting)=>(

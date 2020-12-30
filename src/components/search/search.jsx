@@ -52,7 +52,7 @@ const Search = ({authService, writingRepository}) => {
   // console.log("writings object: ", Object.entries(writings))
   return (
     <>
-      <Header></Header>
+      <Header authService={authService}></Header>
       <div className={styles.container}>
         {Object.keys(writings).length === 0 ?
         <div className={styles.noResults}>
