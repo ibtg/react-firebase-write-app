@@ -7,6 +7,7 @@ import WritingList from '../writingList/writingList'
 const Search = ({authService, writingRepository}) => {
   
   const historyState = useHistory().location.state
+  const subject = historyState && historyState.subject
   const history = useHistory()
   const [writings, setWritings] = useState({})
 
@@ -27,47 +28,60 @@ const Search = ({authService, writingRepository}) => {
     })
   }
 
+  const goToWrite = (event) =>{
+    event.preventDefault()
+
+    history.push({
+      pathname:`/writepage/${subject}`,
+      state:{
+        subject:subject }
+      })
+    }
+
+
   useEffect(() => {
-    
-    // console.log("historyState: ", historyState)
- 
-    const writingList =  writingRepository.getSearch(historyState.subject, (results)=>{
+    const writingList =  writingRepository.getSearch(subject, (results)=>{
       setWritings(results)
       
   })
   return ()=>writingList();
 
-  },[writingRepository , historyState])
+  },[writingRepository , subject])
 
-  // console.log("subject: ", subject)
+  // console.log("writings: ", writings)
   // console.log("writings object: ", Object.entries(writings))
   return (
     <>
       <Header></Header>
       <div className={styles.container}>
-        {writings!== null ?
-
-      Object.entries(writings).map((writing)=>(
-        <WritingList
-          key={writing[1].writingId}
-          subject={writing[1].subject}
-          writingId={writing[1].writingId}
-          writing={writing[1].writing}
-          username={writing[1].username}
-          onMove={goToWritingPage}
-        ></WritingList>
-
-        ))  
-        :
-        <div className={styles.pageNotFound}>
-          검색 결과가 없습니다 
+        {Object.keys(writings).length === 0 ?
+        <div className={styles.noResults}>
+          작성한 글이 없습니다.
         </div>
+        :
+        <>
+          <h2 className={styles.subject}>{writings.subject}</h2>
+          <p className={styles.writing}>{writings.cover.writing}</p>
+          <div className={styles.writingInfo}>
+            <span className={styles.writer}>{writings.cover.writer}</span>
+            <span className={styles.title}>{`<${writings.cover.title}>`}</span>
+          </div>
+          <button className={styles.write} onClick={goToWrite}>나의 글 쓰기</button>
+          {Object.entries(writings.users).map((writing)=>(
+                <WritingList
+                  key={writing[1].writingId}
+                  subject={writing[1].subject}
+                  writingId={writing[1].writingId}
+                  writing={writing[1].writing}
+                  username={writing[1].username}
+                  onMove={goToWritingPage}
+                ></WritingList>
+                ))}
+        </>
+        
         }
-
-
-
-      </div>
-    </>
+    </div>
+  </>
 
   )
 }

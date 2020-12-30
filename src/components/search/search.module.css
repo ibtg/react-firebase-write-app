@@ -1,15 +1,61 @@
 .container {
-  margin-top: 3.2em;
   display: flex;
   flex-direction: column;
-  margin: 0 25%;
-  padding-top: 60px;
+  align-items: center;
+  padding-top: 3.2rem;
   padding-bottom: 1.2em;
   height: 100%;
   width: 100%;
 }
 
-.pageNotFound {
+.subject {
+  margin-top: 2rem;
+}
+
+.writing {
+  font-size: 1.3em;
+  margin: 1.4rem 0;
+  color: #333;
+  white-space: pre-wrap;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+.writingInfo {
+  color: #acacaa;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  font-size: 1.1em;
+}
+
+.writer {
+  margin-right: 0.2em;
+}
+
+.button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  color: #acacaa;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.write {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f8bdbd;
+  cursor: pointer;
+  color: #333;
+  font-family: inherit;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.noResults {
   display: flex;
   align-items: center;
   justify-content: center;
