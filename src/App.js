@@ -16,7 +16,7 @@ function App({authService, writingRepository}) {
 
   return (
     <div className={styles.app}>
-      <BrowserRouter >
+      <BrowserRouter basename="/react-firebase-write-app" >
         <Switch>
           <Route exact path="/">
             <Login authService={authService}></Login>
