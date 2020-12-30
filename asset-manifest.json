@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ibtg/react-firebase-write-app.git/static/css/main.77214867.chunk.css",
+    "main.js": "/ibtg/react-firebase-write-app.git/static/js/main.7674f8f1.chunk.js",
+    "main.js.map": "/ibtg/react-firebase-write-app.git/static/js/main.7674f8f1.chunk.js.map",
+    "runtime-main.js": "/ibtg/react-firebase-write-app.git/static/js/runtime-main.607958db.js",
+    "runtime-main.js.map": "/ibtg/react-firebase-write-app.git/static/js/runtime-main.607958db.js.map",
+    "static/js/2.23346d1c.chunk.js": "/ibtg/react-firebase-write-app.git/static/js/2.23346d1c.chunk.js",
+    "static/js/2.23346d1c.chunk.js.map": "/ibtg/react-firebase-write-app.git/static/js/2.23346d1c.chunk.js.map",
+    "index.html": "/ibtg/react-firebase-write-app.git/index.html",
+    "static/css/main.77214867.chunk.css.map": "/ibtg/react-firebase-write-app.git/static/css/main.77214867.chunk.css.map",
+    "static/js/2.23346d1c.chunk.js.LICENSE.txt": "/ibtg/react-firebase-write-app.git/static/js/2.23346d1c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.607958db.js",
+    "static/js/2.23346d1c.chunk.js",
+    "static/css/main.77214867.chunk.css",
+    "static/js/main.7674f8f1.chunk.js"
+  ]
+}
