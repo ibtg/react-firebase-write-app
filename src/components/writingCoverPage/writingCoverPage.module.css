@@ -42,6 +42,7 @@
   font-family: inherit;
   color: #acacaa;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .buttonIcon {
@@ -54,11 +55,8 @@
   outline: none;
   border: none;
   border-bottom: 1px solid #f8bdbd;
-  margin-bottom: 1.4em;
   cursor: pointer;
   color: #333;
   font-family: inherit;
-  position: fixed;
-  bottom: 6rem;
   font-size: 1.2em;
 }
