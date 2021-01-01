@@ -56,7 +56,7 @@ class WritingRepository{
 
       const value = snapshot.val()
       if (value === null){
-        onUpdate({})
+        onUpdate({'no':'no results'})
       }else{
         const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].writingId - prev[1].writingId)
         orderedValue && onUpdate((orderedValue))
@@ -72,10 +72,10 @@ class WritingRepository{
     ref.once('value', snapshot =>{
 
       const value = snapshot.val();
-      if(value){
-        onUpdate({cover: value.cover, users:value.users, subject:subject})
+      if(value === null){
+        onUpdate({'no':'no results'})
       }else{
-        onUpdate({})
+        onUpdate({cover: value.cover, users:value.users, subject:subject})
       }
     })
     return ()=>ref.off();
@@ -88,10 +88,9 @@ class WritingRepository{
 
       const value = snapshot.val()
       if (value === null){
-        onUpdate({})
+        onUpdate({'no':'no results'})
       }else{
         const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
-        console.log("orderedValue: ", orderedValue)
         orderedValue && onUpdate((orderedValue))
       }
 

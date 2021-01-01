@@ -6,7 +6,7 @@ import styles from './favorite.module.css'
 
 const Favorite = ({user, authService, writingRepository}) => {
 
-  const [writings, setWritings] = useState([])
+  const [writings, setWritings] = useState({})
   const history = useHistory()
 
   const goToFavoritePage = (event) =>{
@@ -15,6 +15,7 @@ const Favorite = ({user, authService, writingRepository}) => {
     const writing = event.currentTarget.childNodes[1].innerHTML
     const username = event.currentTarget.childNodes[2].innerHTML
     const writingId = event.currentTarget.dataset.id
+
     history.push({
       pathname:`/favoritePage/${subject}`,
       state:{
@@ -33,29 +34,28 @@ const Favorite = ({user, authService, writingRepository}) => {
     return () => writingList()
   }, [writingRepository, user])
 
-
   return (
     <>
       <Header authService={authService}></Header>
       <div className={styles.container}>
 
-
-        { 
-          Object.keys(writings).length !== 0 ?
-          writings.map((writing)=>(
-          <WritingList
-            key={writing[1].date}
-            subject={writing[1].subject}
-            writingId={writing[0]}
-            writing={writing[1].writing}
-            username={writing[1].username}
-            onMove={goToFavoritePage}
-          ></WritingList>
-          ))  
-        :
-        <div className={styles.noWriting}>
-          담아온 글이 없습니다.
-        </div>
+        {Object.keys(writings).length !== 0 &&
+          (Object.keys(writings).includes("no") ?
+            <div className={styles.noWriting}>
+              담아온 글이 없습니다.
+            </div>
+            :
+            writings.map((writing)=>(
+              <WritingList
+                key={writing[1].date}
+                subject={writing[1].subject}
+                writingId={writing[0]}
+                writing={writing[1].writing}
+                username={writing[1].username}
+                onMove={goToFavoritePage}
+              ></WritingList>
+              ))
+          )
         }
 
 

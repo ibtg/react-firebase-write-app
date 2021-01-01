@@ -48,17 +48,16 @@ const Search = ({authService, writingRepository}) => {
 
   },[writingRepository , subject])
 
-  // console.log("writings: ", writings)
-  // console.log("writings object: ", Object.entries(writings))
   return (
     <>
       <Header authService={authService}></Header>
       <div className={styles.container}>
-        {Object.keys(writings).length === 0 ?
-        <div className={styles.noResults}>
-          작성한 글이 없습니다.
-        </div>
-        :
+        {Object.keys(writings).length !== 0 && 
+        (Object.keys(writings).includes("no") ?
+          <div className={styles.noResults}>
+            결과를 찾을 수 없습니다.
+          </div>
+          :
         <>
           <h2 className={styles.subject}>{writings.subject}</h2>
           <p className={styles.writing}>{writings.cover.writing}</p>
@@ -76,9 +75,8 @@ const Search = ({authService, writingRepository}) => {
                   username={writing[1].username}
                   onMove={goToWritingPage}
                 ></WritingList>
-                ))}
-        </>
-        
+              ))}
+        </>)
         }
     </div>
   </>

@@ -35,26 +35,25 @@ const MyWriting = ({user, authService, writingRepository}) => {
     <>
       <Header authService={authService}></Header>
       <div className={styles.container}>
-        {Object.keys(myWritings).length !== 0 ?
-        myWritings.map((myWriting)=>(
-        <WritingList
-          key={myWriting[1].writingId}
-          subject={myWriting[1].subject}
-          writingId={myWriting[0]}
-          writing={myWriting[1].writing}
-          username={myWriting[1].username}
-          onMove={onEdit}
-        ></WritingList>
+        {Object.keys(myWritings).length !== 0 &&
 
-        ))  
-        :
-        <div className={styles.noWriting}>
-          작성한 글이 없습니다.
-        </div>
+          (Object.keys(myWritings).includes("no") ?
+            <div className={styles.noWriting}>
+              작성한 글이 없습니다.
+            </div>
+            :
+            myWritings.map((myWriting)=>(
+            <WritingList
+              key={myWriting[1].writingId}
+              subject={myWriting[1].subject}
+              writingId={myWriting[0]}
+              writing={myWriting[1].writing}
+              username={myWriting[1].username}
+              onMove={onEdit}
+            ></WritingList>
+            ))  
+          )
         }
-
-
-
       </div>
     </>
   )
