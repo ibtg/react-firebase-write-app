@@ -10,6 +10,7 @@ import WritingPage from './components/writingPage/writingPage'
 import Favorite from './components/favorite/favorite'
 import FavoritePage from './components/favoritePage/favoritePage'
 import MyWritingPage from './components/myWritingPage/myWritingPage'
+import PageNotFound from './components/pageNotFound/pageNotFound'
 import Auth from './hoc/auth'
 
 function App({authService, writingRepository}) {
@@ -30,6 +31,9 @@ function App({authService, writingRepository}) {
           <Route exact path="/writingPage" component={Auth(WritingPage, authService, writingRepository)}></Route>  
           <Route exact path="/favorite" component={Auth(Favorite, authService, writingRepository )}></Route>
           <Route exact path="/favoritePage/:subject" component={Auth(FavoritePage, authService, writingRepository )}></Route>
+          <Route path="/">
+            <PageNotFound></PageNotFound>
+          </Route>
         </Switch>
       </BrowserRouter>
       
