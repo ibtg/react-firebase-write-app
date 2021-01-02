@@ -27,23 +27,23 @@ class WritingRepository{
   }
 
   // save user's writing
-  saveWriting(userId, subject, writing){
+  saveWriting(userId, subject, subjectId, writing){
 
     // save in subject
     firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).set(writing)
 
     // save as user
-    firebaseDatabase.ref(`users/${userId}/subjects/${subject}`).set(writing)
+    firebaseDatabase.ref(`users/${userId}/subjects/${subjectId}`).set(writing)
 
   }
 
-  deleteWriting(userId, subject){
+  deleteWriting(userId, subject, subjectId){
     
     // save in subject
     firebaseDatabase.ref(`subjects/${subject}/users/${userId}`).remove()
 
     // save as user
-    firebaseDatabase.ref(`users/${userId}/subjects/${subject}`).remove()
+    firebaseDatabase.ref(`users/${userId}/subjects/${subjectId}`).remove()
 
   }
 
@@ -58,8 +58,9 @@ class WritingRepository{
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].writingId - prev[1].writingId)
-        orderedValue && onUpdate((orderedValue))
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].writingId - prev[1].writingId)
+        const orderedObj = Object.fromEntries(orderedArray)
+        onUpdate(orderedObj)
       }
     })
 
@@ -76,7 +77,7 @@ class WritingRepository{
       if(value === null){
         onUpdate({'no':'no results'})
       }else{
-        onUpdate({cover: value.cover, users:value.users, subject:subject})
+        onUpdate({cover: value.cover, users:value.users, subjectId:value.subjectId, subject:subject})
       }
     })
     return ()=>ref.off();
@@ -85,15 +86,16 @@ class WritingRepository{
   getFavorite(userId, onUpdate){
     const ref = firebaseDatabase.ref(`users/${userId}/favorite`)
 
-    ref.orderByChild('writingId').once('value', snapshot =>{
+    ref.orderByChild('addDate').once('value', snapshot =>{
 
       const value = snapshot.val()
 
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedValue = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
-        orderedValue && onUpdate((orderedValue))
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
+        const orderedObj = Object.fromEntries(orderedArray)
+        onUpdate(orderedObj)
       }
 
     })
@@ -101,15 +103,15 @@ class WritingRepository{
   }
 
   // add to user's favorite writing
-  addToFavorite(userId, writingId, writing){
+  addToFavorite(userId, subjectId, writing){
     // save as user
-    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).set(writing)
+    firebaseDatabase.ref(`users/${userId}/favorite/${subjectId}`).set(writing)
 
   }
 
   // remove from favorite list
-  removeToFavorite(userId, writingId){
-    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).remove()
+  removeToFavorite(userId, subjectId){
+    firebaseDatabase.ref(`users/${userId}/favorite/${subjectId}`).remove()
   }
 
 }

@@ -10,20 +10,19 @@ const WritingPage = ({user, authService, writingRepository}) => {
   const subject = historyState && historyState.subject
   const writing = historyState && historyState.writing
   const username = historyState && historyState.username
-  const writingId = historyState && historyState.writingId
+  const subjectId = historyState && historyState.subjectId
 
   const addFavoriteWriting= (event)=>{
     event.preventDefault();
 
-    const likeObj = {
+    const favoriteObj = {
       subject:subject,
       username:username,
       writing:writing,
-      date:Date.now()
+      addDate:Date.now()
     }
 
-    writingRepository.addToFavorite(user.uid, writingId, likeObj)
-    console.log("담아가기")
+    writingRepository.addToFavorite(user.uid, subjectId, favoriteObj)
     history.push({
       pathname:`/favorite`
     })

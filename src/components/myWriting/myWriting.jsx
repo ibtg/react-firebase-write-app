@@ -14,11 +14,13 @@ const MyWriting = ({user, authService, writingRepository}) => {
     const childeNodes = event.currentTarget.childNodes
     const subject = childeNodes[0].innerText
     const writing = childeNodes[1].innerHTML
+    const subjectId = event.currentTarget.dataset.id
 
     history.push({
       pathname:`/mywritingpage`,
       state:{
         subject: subject,
+        subjectId: subjectId,
         writing: writing
       }
 
@@ -31,8 +33,6 @@ const MyWriting = ({user, authService, writingRepository}) => {
       setMyWritings(writing)})
   },[writingRepository, user])
 
-  // console.log("myWritings ",myWritings)
-
   return (
     <>
       <Header authService={authService}></Header>
@@ -44,14 +44,14 @@ const MyWriting = ({user, authService, writingRepository}) => {
               작성한 글이 없습니다.
             </div>
             :
-            myWritings.map((myWriting)=>(
+            Object.keys(myWritings).map(key => (
             <WritingList
-              key={myWriting[1].writingId}
-              subject={myWriting[1].subject}
-              writingId={myWriting[0]}
-              writing={myWriting[1].writing}
-              username={myWriting[1].username}
-              alignCenter={myWriting[1].alignCenter}
+              key={myWritings[key].addDate}
+              subject={myWritings[key].subject}
+              subjectId={key}
+              writing={myWritings[key].writing}
+              username={myWritings[key].username}
+              alignCenter={myWritings[key].alignCenter}
               onMove={onEdit}
             ></WritingList>
             ))  

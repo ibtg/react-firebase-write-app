@@ -10,12 +10,12 @@ const FavoritePage = ({user, authService, writingRepository}) => {
   const subject = historyState && historyState.subject
   const writing = historyState && historyState.writing
   const username = historyState && historyState.username
-  const writingId = historyState && historyState.writingId
+  const subjectId = historyState && historyState.subjectId
 
   const removeFavoriteWriting= (event)=>{
     event.preventDefault()
-    writingRepository.removeToFavorite(user.uid, writingId)
-    console.log("remove writingId: ", writingId)
+    writingRepository.removeToFavorite(user.uid, subjectId)
+    console.log("remove subjectId: ", subjectId)
     history.push({
       pathname:`/favorite`
     })

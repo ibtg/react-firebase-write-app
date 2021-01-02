@@ -8,7 +8,6 @@ const Subjects = ({authService, writingRepository}) => {
   const [subjects, setSubjects] = useState({})
 
   useEffect(() => {
-    // console.log("subjects: ", writingRepository)
     const subjectList =  writingRepository.getSubjects(subjects=>{
       setSubjects(subjects)
     })
@@ -17,19 +16,17 @@ const Subjects = ({authService, writingRepository}) => {
 
   }, [writingRepository])
 
-  // console.log("subjects: ", subjects)
-  // console.log("subjects entires: ", Object.entries(subjects))
 
   return (
     <>
       <Header authService={authService}></Header>
       <section className={styles.container}>
         <ul className={styles.list}>
-          {subjects && Object.entries(subjects).map(subject => 
+          {Object.keys(subjects).map(key => 
           <Subject 
-            key={subject[1].subjectId} 
-            subject={subject[0]} 
-            count={Object.keys(subject[1].users).length}>
+            key={subjects[key].subjectId} 
+            subject={key} 
+            count={Object.keys(subjects[key].users).length}>
           </Subject>)}
         </ul>
       </section>

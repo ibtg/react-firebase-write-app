@@ -8,6 +8,7 @@ const WritePage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
   const subject = historyState && historyState.subject
+  const subjectId = historyState && historyState.subjectId
   const [alignCenter, setAlignCenter] = useState(false)
 
   const history = useHistory()
@@ -22,15 +23,14 @@ const WritePage = ({user, authService, writingRepository}) => {
     }
 
     const writing = {
-      writingId: Date.now(),
+      addDate: Date.now(),
       subject:subject,
       writing:textareaRef.current.value,
       username:user.displayName,
       alignCenter:alignCenter
     }
-    
-    // console.log("subjectId: ", subjectId)
-    writingRepository.saveWriting(user.uid, subject, writing)
+ 
+    writingRepository.saveWriting(user.uid, subject, subjectId, writing)
 
     formRef.current.reset();
 
@@ -53,7 +53,6 @@ const WritePage = ({user, authService, writingRepository}) => {
 
     }
   }, [subject, history])
-
 
   return (
 

@@ -8,6 +8,7 @@ const Search = ({authService, writingRepository}) => {
   
   const historyState = useHistory().location.state
   const subject = historyState && historyState.subject
+  const subjectId = historyState && historyState.subjectId
   const history = useHistory()
   const [writings, setWritings] = useState({})
 
@@ -16,14 +17,14 @@ const Search = ({authService, writingRepository}) => {
     const subject = event.currentTarget.childNodes[0].innerHTML
     const writing = event.currentTarget.childNodes[1].innerHTML
     const username = event.currentTarget.childNodes[2].innerHTML
-    const writingId = event.currentTarget.dataset.id
+
     history.push({
       pathname:'/writingPage',
       state:{
         subject:subject,
         writing:writing,
         username:username,
-        writingId:writingId
+        subjectId:subjectId
       }
     })
   }
@@ -34,7 +35,8 @@ const Search = ({authService, writingRepository}) => {
     history.push({
       pathname:`/writepage/${subject}`,
       state:{
-        subject:subject }
+        subject:subject,
+        subjectId: writings.subjectId}
       })
     }
 
@@ -48,7 +50,6 @@ const Search = ({authService, writingRepository}) => {
 
   },[writingRepository , subject])
 
-  // console.log("writings: ", writings)
   return (
     <>
       <Header authService={authService}></Header>
@@ -67,14 +68,14 @@ const Search = ({authService, writingRepository}) => {
             <span className={styles.title}>{`<${writings.cover.title}>`}</span>
           </div>
           <button className={styles.write} onClick={goToWrite}>나의 글 쓰기</button>
-          {Object.entries(writings.users).map((writing)=>(
+          {Object.keys(writings.users).map((key)=>(
                 <WritingList
-                  key={writing[1].writingId}
-                  subject={writing[1].subject}
-                  writingId={writing[1].writingId}
-                  writing={writing[1].writing}
-                  username={writing[1].username}
-                  alignCenter={writing[1].alignCenter}
+                  key={writings.users[key].addDate}
+                  subject={writings.users[key].subject}
+                  subjectId={writings.users[key].subjectId}
+                  writing={writings.users[key].writing}
+                  username={writings.users[key].username}
+                  alignCenter={writings.users[key].alignCenter}
                   onMove={goToWritingPage}
                 ></WritingList>
               ))}

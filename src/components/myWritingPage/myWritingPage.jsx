@@ -8,6 +8,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
   const subject = historyState && historyState.subject
+  const subjectId = historyState && historyState.subjectId
   const [writing, setWriting] = useState(historyState ? historyState.writing : '')
   const history = useHistory()
   const formRef = useRef();
@@ -23,14 +24,14 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
     }
 
     const writing = {
-      writingId: Date.now(),
+      addDate: Date.now(),
       subject:subject,
       writing:textareaRef.current.value,
       username:user.displayName,
       alignCenter:alignCenter
     }
 
-    writingRepository.saveWriting(user.uid, subject, writing)
+    writingRepository.saveWriting(user.uid, subject, subjectId, writing)
 
     formRef.current.reset();
 
@@ -41,7 +42,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
 
   const onDelete = (event)=>{
     event.preventDefault();
-    writingRepository.deleteWriting(user.uid, subject)
+    writingRepository.deleteWriting(user.uid, subject, subjectId)
     history.push({
       pathname:'/mywriting'
     })

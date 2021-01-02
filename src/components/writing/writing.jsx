@@ -14,7 +14,8 @@ const Writing = ({authService, writingRepository}) => {
     history.push({
       pathname:`/writepage/${writing.subject}`,
       state:{
-        subject:writing.subject }
+        subject:writing.subject,
+        subjectId:writing.info.subjectId }
       })
     }
 
@@ -24,7 +25,8 @@ const Writing = ({authService, writingRepository}) => {
     history.push({
       pathname:`/search/${writing.subject}`,
       state:{
-        subject:writing.subject }
+        subject:writing.subject,
+        subjectId:writing.info.subjectId }
       })
     }
 

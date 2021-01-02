@@ -14,7 +14,7 @@ const Favorite = ({user, authService, writingRepository}) => {
     const subject = event.currentTarget.childNodes[0].innerHTML
     const writing = event.currentTarget.childNodes[1].innerHTML
     const username = event.currentTarget.childNodes[2].innerHTML
-    const writingId = event.currentTarget.dataset.id
+    const subjectId = event.currentTarget.dataset.id
 
     history.push({
       pathname:`/favoritePage/${subject}`,
@@ -22,7 +22,7 @@ const Favorite = ({user, authService, writingRepository}) => {
         subject:subject,
         writing:writing,
         username:username,
-        writingId:writingId
+        subjectId:subjectId
       }
     })
   }
@@ -34,7 +34,7 @@ const Favorite = ({user, authService, writingRepository}) => {
     return () => writingList()
   }, [writingRepository, user])
 
-  // console.log("favorite ",writings)
+  console.log("favorite ",writings)
 
   return (
     <>
@@ -47,14 +47,14 @@ const Favorite = ({user, authService, writingRepository}) => {
               담아온 글이 없습니다.
             </div>
             :
-            writings.map((writing)=>(
+            Object.keys(writings).map(key=>(
               <WritingList
-                key={writing[1].date}
-                subject={writing[1].subject}
-                writingId={writing[0]}
-                writing={writing[1].writing}
-                username={writing[1].username}
-                alignCenter={writing[1].alignCenter}
+                key={writings[key].addDate}
+                subject={writings[key].subject}
+                subjectId={key}
+                writing={writings[key].writing}
+                username={writings[key].username}
+                alignCenter={writings[key].alignCenter}
                 onMove={goToFavoritePage}
               ></WritingList>
               ))
