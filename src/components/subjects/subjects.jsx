@@ -16,7 +16,6 @@ const Subjects = ({authService, writingRepository}) => {
 
   }, [writingRepository])
 
-
   return (
     <>
       <Header authService={authService}></Header>
@@ -25,7 +24,8 @@ const Subjects = ({authService, writingRepository}) => {
           {Object.keys(subjects).map(key => 
           <Subject 
             key={subjects[key].subjectId} 
-            subject={key} 
+            subject={key}
+            subjectId={subjects[key].subjectId} 
             count={Object.keys(subjects[key].users).length}>
           </Subject>)}
         </ul>

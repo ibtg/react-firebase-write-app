@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './subject.module.css'
 
-const Subject = ({subject, count}) => {
+const Subject = ({subject, subjectId, count}) => {
   const history = useHistory();
+  // const [subjectId, setSubjectId] = useState(subjectId)
 
   const goToWritingPage = (event) =>{
     event.preventDefault()
@@ -11,7 +12,8 @@ const Subject = ({subject, count}) => {
     history.push({
       pathname:`/search/${subject}`,
       state:{
-        subject:subject }
+        subject:subject,
+        subjectId:subjectId}
       })
     }
 

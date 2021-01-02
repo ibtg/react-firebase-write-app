@@ -52,13 +52,13 @@ class WritingRepository{
   getMyWriting(userId, onUpdate){
     const ref = firebaseDatabase.ref(`users/${userId}/subjects`)
 
-    ref.orderByChild('writingId').once('value', snapshot =>{
+    ref.orderByChild('addDate').once('value', snapshot =>{
 
       const value = snapshot.val()
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].writingId - prev[1].writingId)
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDate - prev[1].addDate)
         const orderedObj = Object.fromEntries(orderedArray)
         onUpdate(orderedObj)
       }
@@ -93,7 +93,7 @@ class WritingRepository{
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].date - prev[1].date)
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDate - prev[1].addDate)
         const orderedObj = Object.fromEntries(orderedArray)
         onUpdate(orderedObj)
       }
