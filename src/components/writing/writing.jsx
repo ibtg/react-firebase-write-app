@@ -54,12 +54,10 @@ const Writing = ({authService, writingRepository}) => {
             <span className={styles.writer}>{writing.info.cover.writer}</span>
             <span className={styles.title}>{`<${writing.info.cover.title}>`}</span>
           </div>
-
           <button className={styles.button}>
-            <BsChevronDoubleRight className={styles.buttonIcon}></BsChevronDoubleRight>
-            <span className={styles.buttonText} onClick={goToWritingPage}>넘겨서 보기</span>
-          </button>
-
+              <BsChevronDoubleRight className={styles.buttonIcon}></BsChevronDoubleRight>
+              <span className={styles.buttonText} onClick={goToWritingPage}>넘겨서 보기</span>
+            </button>
           <button className={styles.write} onClick={goToWrite}>나의 글 쓰기</button>
         </section>
     }

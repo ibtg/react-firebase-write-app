@@ -1,3 +1,5 @@
+@value backgroundWhite, fontLightBlack, fontLightGrey,borderLightPink from '../../common/colors.css';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -11,23 +13,23 @@
 .subject {
   font-size: 2.4em;
   margin-bottom: 1rem;
-  color: #333;
+  color: fontLightBlack;
 }
 
 .writing {
   font-size: 1.3em;
   margin-bottom: 1rem;
-  color: #333;
+  color: fontLightBlack;
   white-space: pre-wrap;
   text-align: center;
   line-height: 1.5em;
 }
 
 .writingInfo {
-  color: #acacaa;
+  color: fontLightGrey;
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-size: 1.1em;
 }
 
@@ -40,23 +42,24 @@
   outline: none;
   border: none;
   font-family: inherit;
-  color: #acacaa;
+  color: fontLightGrey;
   cursor: pointer;
-  margin-bottom: 1rem;
+  font-size: 1em;
+  margin-bottom: 4rem;
 }
 
 .buttonIcon {
   transform: translateY(0.2em);
-  margin-right: 0.1em;
+  margin-right: 0.2em;
 }
 
 .write {
   background-color: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid #f8bdbd;
+  border-bottom: 1px solid borderLightPink;
   cursor: pointer;
-  color: #333;
+  color: fontLightBlack;
   font-family: inherit;
   font-size: 1.2em;
 }
