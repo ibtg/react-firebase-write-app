@@ -31,6 +31,8 @@ const MyWriting = ({user, authService, writingRepository}) => {
       setMyWritings(writing)})
   },[writingRepository, user])
 
+  // console.log("myWritings ",myWritings)
+
   return (
     <>
       <Header authService={authService}></Header>
@@ -49,6 +51,7 @@ const MyWriting = ({user, authService, writingRepository}) => {
               writingId={myWriting[0]}
               writing={myWriting[1].writing}
               username={myWriting[1].username}
+              alignCenter={myWriting[1].alignCenter}
               onMove={onEdit}
             ></WritingList>
             ))  

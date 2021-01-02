@@ -70,8 +70,9 @@ class WritingRepository{
   getSearch(subject, onUpdate){
     const ref = firebaseDatabase.ref(`subjects/${subject}`)
     ref.once('value', snapshot =>{
-
+      
       const value = snapshot.val();
+
       if(value === null){
         onUpdate({'no':'no results'})
       }else{
@@ -87,6 +88,7 @@ class WritingRepository{
     ref.orderByChild('writingId').once('value', snapshot =>{
 
       const value = snapshot.val()
+
       if (value === null){
         onUpdate({'no':'no results'})
       }else{

@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './myWritingPage.module.css'
 import Header from '../header/header'
+import {AiOutlineAlignLeft, AiOutlineAlignCenter} from 'react-icons/ai'
 
 const MyWritingPage = ({user, authService, writingRepository}) => {
 
@@ -11,6 +12,8 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
   const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
+  const [alignCenter, setAlignCenter] = useState(false)
+
 
   const onSubmit = (event) =>{
     event.preventDefault();
@@ -23,7 +26,8 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
       writingId: Date.now(),
       subject:subject,
       writing:textareaRef.current.value,
-      username:user.displayName
+      username:user.displayName,
+      alignCenter:alignCenter
     }
 
     writingRepository.saveWriting(user.uid, subject, writing)
@@ -44,6 +48,10 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
 
   }
 
+  const textAlign = () =>{
+    setAlignCenter(!alignCenter)
+  }
+
   const handleChange = (event) =>{
     setWriting(event.currentTarget.value)
   }
@@ -57,7 +65,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
           <textarea 
             autoFocus={true}
             ref={textareaRef} 
-            className={styles.content}
+            className={ alignCenter ? `${styles.content} ${styles.center}` : `${styles.content}`}
             minLength="1" 
             placeholder='당신의 생각을 들려주세요'
             value={writing}
@@ -67,14 +75,16 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
           </textarea>
           <div className={styles.buttonContainer}>
 
-            <div className="buttonContainer">
+
+            {alignCenter === true ? 
+            <AiOutlineAlignCenter className={styles.textAlignIcon} onClick={textAlign}></AiOutlineAlignCenter> 
+            : <AiOutlineAlignLeft className={styles.textAlignIcon} onClick={textAlign}></AiOutlineAlignLeft>}
               <button className={styles.button} onClick={onDelete}>
                 삭제하기
               </button>
               <button className={styles.button} onClick={onSubmit}>
                 수정하기
-              </button>
-            </div>     
+              </button>   
           </div>
         </form>
       </section>

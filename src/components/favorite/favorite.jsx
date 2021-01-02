@@ -34,6 +34,8 @@ const Favorite = ({user, authService, writingRepository}) => {
     return () => writingList()
   }, [writingRepository, user])
 
+  // console.log("favorite ",writings)
+
   return (
     <>
       <Header authService={authService}></Header>
@@ -52,6 +54,7 @@ const Favorite = ({user, authService, writingRepository}) => {
                 writingId={writing[0]}
                 writing={writing[1].writing}
                 username={writing[1].username}
+                alignCenter={writing[1].alignCenter}
                 onMove={goToFavoritePage}
               ></WritingList>
               ))

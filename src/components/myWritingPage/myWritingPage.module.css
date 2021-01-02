@@ -30,17 +30,12 @@
   color: #333;
 }
 
-.title::placeholder {
-  color: #ccc;
-}
-
 .content {
   flex-basis: 90%;
   padding: 0.5em;
   border: none;
   outline: none;
   font-size: 1.2em;
-  /* overflow-y: scroll; */
   font-family: inherit;
   resize: none;
   color: #333;
@@ -51,11 +46,20 @@
   color: #ccc;
 }
 
+.center {
+  text-align: center;
+}
+
 .buttonContainer {
   display: flex;
   padding-top: 1em;
   justify-content: flex-end;
   padding-right: 1em;
+}
+
+.textAlignIcon {
+  font-size: 1.4em;
+  cursor: pointer;
 }
 
 .button {

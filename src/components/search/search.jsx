@@ -48,6 +48,7 @@ const Search = ({authService, writingRepository}) => {
 
   },[writingRepository , subject])
 
+  // console.log("writings: ", writings)
   return (
     <>
       <Header authService={authService}></Header>
@@ -73,6 +74,7 @@ const Search = ({authService, writingRepository}) => {
                   writingId={writing[1].writingId}
                   writing={writing[1].writing}
                   username={writing[1].username}
+                  alignCenter={writing[1].alignCenter}
                   onMove={goToWritingPage}
                 ></WritingList>
               ))}

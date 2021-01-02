@@ -1,11 +1,10 @@
 .content {
   border: 2px solid #f8bdbd;
   margin: 2em 0;
-  padding: 1.4em 1.4em 2em 1.4em;
+  padding: 2em 3em;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
   white-space: pre-wrap;
   cursor: pointer;
   width: 35em;
@@ -21,8 +20,13 @@
   font-size: 1.2em;
 }
 
+.center {
+  text-align: center;
+}
+
 .writer {
   font-size: 1.1em;
   color: #acacac;
   margin-top: 1.4em;
+  text-align: center;
 }

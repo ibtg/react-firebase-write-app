@@ -2,11 +2,14 @@ import React, {useRef, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../header/header'
 import styles from './writePage.module.css'
+import {AiOutlineAlignLeft, AiOutlineAlignCenter} from 'react-icons/ai'
 
 const WritePage = ({user, authService, writingRepository}) => {
 
   const historyState = useHistory().location.state
   const subject = historyState && historyState.subject
+  const [alignCenter, setAlignCenter] = useState(false)
+
   const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
@@ -22,10 +25,10 @@ const WritePage = ({user, authService, writingRepository}) => {
       writingId: Date.now(),
       subject:subject,
       writing:textareaRef.current.value,
-      username:user.displayName
+      username:user.displayName,
+      alignCenter:alignCenter
     }
     
-    // console.log("writing: ", writing)
     // console.log("subjectId: ", subjectId)
     writingRepository.saveWriting(user.uid, subject, writing)
 
@@ -34,6 +37,10 @@ const WritePage = ({user, authService, writingRepository}) => {
     history.push({
       pathname:'/mywriting'
     })
+  }
+
+  const textAlign = () =>{
+    setAlignCenter(!alignCenter)
   }
 
 
@@ -47,7 +54,7 @@ const WritePage = ({user, authService, writingRepository}) => {
     }
   }, [subject, history])
 
-  
+
   return (
 
     <>
@@ -58,12 +65,15 @@ const WritePage = ({user, authService, writingRepository}) => {
           <textarea 
             autoFocus={true}
             ref={textareaRef} 
-            className={styles.content}
+            className={ alignCenter ? `${styles.content} ${styles.center}` : `${styles.content}`}
             minLength="1" 
             placeholder='당신의 생각을 들려주세요'
             >
           </textarea>
           <div className={styles.buttonContainer}>
+            {alignCenter === true ? 
+            <AiOutlineAlignCenter className={styles.textAlignIcon} onClick={textAlign}></AiOutlineAlignCenter> 
+            : <AiOutlineAlignLeft className={styles.textAlignIcon} onClick={textAlign}></AiOutlineAlignLeft>}
             <button className={styles.button} onClick={onSubmit}>
               작성하기
             </button>
