@@ -17,7 +17,7 @@ const Favorite = ({user, authService, writingRepository}) => {
     const subjectId = event.currentTarget.dataset.id
 
     history.push({
-      pathname:`/favoritePage/${subject}`,
+      pathname:`/favoritePage`,
       state:{
         subject:subject,
         writing:writing,

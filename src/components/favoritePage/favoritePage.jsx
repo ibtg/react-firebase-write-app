@@ -15,7 +15,6 @@ const FavoritePage = ({user, authService, writingRepository}) => {
   const removeFavoriteWriting= (event)=>{
     event.preventDefault()
     writingRepository.removeToFavorite(user.uid, subjectId)
-    console.log("remove subjectId: ", subjectId)
     history.push({
       pathname:`/favorite`
     })

@@ -12,7 +12,7 @@ const Writing = ({authService, writingRepository}) => {
     event.preventDefault()
 
     history.push({
-      pathname:`/writepage/${writing.subject}`,
+      pathname:`/writepage`,
       state:{
         subject:writing.subject,
         subjectId:writing.info.subjectId }
@@ -23,7 +23,7 @@ const Writing = ({authService, writingRepository}) => {
     event.preventDefault()
 
     history.push({
-      pathname:`/search/${writing.subject}`,
+      pathname:`/search`,
       state:{
         subject:writing.subject,
         subjectId:writing.info.subjectId }

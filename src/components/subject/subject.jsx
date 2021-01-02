@@ -10,7 +10,7 @@ const Subject = ({subject, subjectId, count}) => {
     event.preventDefault()
 
     history.push({
-      pathname:`/search/${subject}`,
+      pathname:`/search`,
       state:{
         subject:subject,
         subjectId:subjectId}

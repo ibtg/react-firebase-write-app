@@ -17,7 +17,7 @@ const Sidebar = ({onClickMenu, sidebar, onLogout, goToSubjects, goToWriting, goT
     }
     inputRef.current.value=""
     history.push({
-      pathname:`/search/${subject}`,
+      pathname:`/search`,
       state:{
         subject:subject
       }
