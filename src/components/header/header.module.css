@@ -1,7 +1,9 @@
+@value backgroundWhite, fontBlack, fontLightGrey from '../../common/colors.css';
+
 .header {
   width: 100%;
-  background-color: #fff;
-  height: 3.2rem;
+  background-color: backgroundWhite;
+  height: 3.6em;
   position: fixed;
   top: 0;
   display: flex;
@@ -11,12 +13,11 @@
 }
 
 .menu {
-  width: 27px;
-  height: 20px;
+  font-size: 1.8em;
   cursor: pointer;
-  color: #000;
 }
 
 .date {
-  color: #acacac;
+  color: fontLightGrey;
+  font-size: 1.2em;
 }

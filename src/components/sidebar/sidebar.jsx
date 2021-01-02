@@ -35,7 +35,7 @@ const Sidebar = ({onClickMenu, sidebar, onLogout, goToSubjects, goToWriting, goT
             <li className={styles.item} onClick={goToWriting}>글쓰기</li>
             <li className={styles.item} onClick={goToSubjects}>글감</li>
             <li className={styles.item} onClick={goToMyWriting}>나의 글</li>
-            <li className={styles.item} onClick={goToFavorite}>구독</li>
+            <li className={styles.item} onClick={goToFavorite}>보관함</li>
             <li className={styles.item} onClick={onLogout}>로그아웃</li>
           </ul>
           <div className={styles.searchBox}>

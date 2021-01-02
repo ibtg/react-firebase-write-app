@@ -15,14 +15,23 @@
 
 .closeContainer {
   height: 3.2rem;
+  display: flex;
+  align-items: center;
 }
 
 .menu {
-  width: 32px;
-  height: 24px;
-  margin-top: 18px;
+  font-size: 1.8em;
   cursor: pointer;
   color: #000;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 6em;
+  box-sizing: border-box;
 }
 
 .list {
@@ -33,7 +42,7 @@
 .item {
   text-align: center;
   height: 3em;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 3em;
   color: #333;
 }
@@ -56,15 +65,6 @@
 
 .item:hover {
   cursor: pointer;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding-bottom: 6em;
-  box-sizing: border-box;
 }
 
 .searchBox {

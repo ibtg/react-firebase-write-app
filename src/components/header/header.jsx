@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './header.module.css'
-import {FaBars} from 'react-icons/fa'
+import {AiOutlineMenu} from 'react-icons/ai'
 import Sidebar from '../sidebar/sidebar'
 import { useHistory } from 'react-router-dom'
 
@@ -83,11 +83,10 @@ const Header = ({authService}) => {
   },[])
 
 
-  // console.log("class: ",  headerRef.current && headerRef.current.classList[1] )
   return (
     <>
       <header className={styles.header} ref={headerRef}>
-        <FaBars className={styles.menu} onClick={onClickMenu}></FaBars>
+        <AiOutlineMenu className={styles.menu} onClick={onClickMenu}></AiOutlineMenu>
         <span className={styles.date}>
           {`${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일, ${dateInfo.hour}`}
         </span>
