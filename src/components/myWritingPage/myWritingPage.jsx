@@ -23,8 +23,12 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
       return ;
     }
 
+    const date = new Date()
+
+    
     const writing = {
-      addDate: Date.now(),
+      addDateNow: Date.now(),
+      addDate :`${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일 ${date.getHours()}시`,
       subject:subject,
       writing:textareaRef.current.value,
       username:user.displayName,

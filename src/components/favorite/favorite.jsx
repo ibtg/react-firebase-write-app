@@ -34,7 +34,6 @@ const Favorite = ({user, authService, writingRepository}) => {
     return () => writingList()
   }, [writingRepository, user])
 
-  console.log("favorite ",writings)
 
   return (
     <>
@@ -49,11 +48,12 @@ const Favorite = ({user, authService, writingRepository}) => {
             :
             Object.keys(writings).map(key=>(
               <WritingList
-                key={writings[key].addDate}
+                key={writings[key].addDateNow}
                 subject={writings[key].subject}
                 subjectId={key}
                 writing={writings[key].writing}
                 username={writings[key].username}
+                addDate={writings[key].addDate}
                 alignCenter={writings[key].alignCenter}
                 onMove={goToFavoritePage}
               ></WritingList>

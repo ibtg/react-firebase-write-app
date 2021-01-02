@@ -15,11 +15,16 @@ const WritingPage = ({user, authService, writingRepository}) => {
   const addFavoriteWriting= (event)=>{
     event.preventDefault();
 
+    const date = new Date()
+
+
     const favoriteObj = {
+      addDateNow: Date.now(),
+      addDate :`${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일 ${date.getHours()}시`,
       subject:subject,
       username:username,
       writing:writing,
-      addDate:Date.now()
+ 
     }
 
     writingRepository.addToFavorite(user.uid, subjectId, favoriteObj)
@@ -43,7 +48,7 @@ const WritingPage = ({user, authService, writingRepository}) => {
               <div className={styles.username}>{username}의 글</div>
               <button className={styles.button} onClick={addFavoriteWriting}>
                 담아가기
-              </button>
+              </button> 
             </div>
         </div>
       </div>

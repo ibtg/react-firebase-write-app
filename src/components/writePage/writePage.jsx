@@ -22,8 +22,11 @@ const WritePage = ({user, authService, writingRepository}) => {
       return ;
     }
 
+    const date = new Date()
+
     const writing = {
-      addDate: Date.now(),
+      addDateNow: Date.now(),
+      addDate :`${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일 ${date.getHours()}시`,
       subject:subject,
       writing:textareaRef.current.value,
       username:user.displayName,
@@ -43,16 +46,6 @@ const WritePage = ({user, authService, writingRepository}) => {
     setAlignCenter(!alignCenter)
   }
 
-
-  useEffect(() => {
-    if(subject === undefined){
-      alert('접근 권한이 없습니다.');
-      history.push({
-        pathname:'/main'
-      })
-
-    }
-  }, [subject, history])
 
   return (
 

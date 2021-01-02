@@ -52,7 +52,7 @@ class WritingRepository{
   getMyWriting(userId, onUpdate){
     const ref = firebaseDatabase.ref(`users/${userId}/subjects`)
 
-    ref.orderByChild('addDate').once('value', snapshot =>{
+    ref.orderByChild('addDateNow').once('value', snapshot =>{
 
       const value = snapshot.val()
       if (value === null){
@@ -86,7 +86,7 @@ class WritingRepository{
   getFavorite(userId, onUpdate){
     const ref = firebaseDatabase.ref(`users/${userId}/favorite`)
 
-    ref.orderByChild('addDate').once('value', snapshot =>{
+    ref.orderByChild('addDateNow').once('value', snapshot =>{
 
       const value = snapshot.val()
 

@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './subject.module.css'
 
 const Subject = ({subject, subjectId, count}) => {
   const history = useHistory();
-  // const [subjectId, setSubjectId] = useState(subjectId)
 
   const goToWritingPage = (event) =>{
     event.preventDefault()

@@ -33,7 +33,7 @@ const Search = ({authService, writingRepository}) => {
     event.preventDefault()
 
     history.push({
-      pathname:`/writepage/${subject}`,
+      pathname:`/writepage`,
       state:{
         subject:subject,
         subjectId: writings.subjectId}
@@ -70,11 +70,12 @@ const Search = ({authService, writingRepository}) => {
           <button className={styles.write} onClick={goToWrite}>나의 글 쓰기</button>
           {Object.keys(writings.users).map((key)=>(
                 <WritingList
-                  key={writings.users[key].addDate}
+                  key={writings.users[key].addDateNow}
                   subject={writings.users[key].subject}
                   subjectId={writings.users[key].subjectId}
                   writing={writings.users[key].writing}
                   username={writings.users[key].username}
+                  addDate={writings.users[key].addDate}
                   alignCenter={writings.users[key].alignCenter}
                   onMove={goToWritingPage}
                 ></WritingList>

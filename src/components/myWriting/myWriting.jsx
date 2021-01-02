@@ -33,6 +33,7 @@ const MyWriting = ({user, authService, writingRepository}) => {
       setMyWritings(writing)})
   },[writingRepository, user])
 
+
   return (
     <>
       <Header authService={authService}></Header>
@@ -46,11 +47,12 @@ const MyWriting = ({user, authService, writingRepository}) => {
             :
             Object.keys(myWritings).map(key => (
             <WritingList
-              key={myWritings[key].addDate}
+              key={myWritings[key].addDateNow}
               subject={myWritings[key].subject}
               subjectId={key}
               writing={myWritings[key].writing}
               username={myWritings[key].username}
+              addDate={myWritings[key].addDate}
               alignCenter={myWritings[key].alignCenter}
               onMove={onEdit}
             ></WritingList>
