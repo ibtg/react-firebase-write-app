@@ -1,3 +1,5 @@
+@value White, LightGrey, LightPink from '../../common/styles.css';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -10,10 +12,10 @@
 }
 
 .content {
-  border: 2px solid #f8bdbd;
+  border: 2px solid LightPink;
   margin-bottom: 2em;
   padding: 2em;
-  background-color: #fff;
+  background-color: White;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +35,7 @@
 
 .writer {
   font-size: 1em;
-  color: #acacac;
+  color: LightGrey;
   margin-top: 1.4em;
 }
 

@@ -1,10 +1,12 @@
+@value White, Grey, LightGrey from '../../common/styles.css';
+
 .item {
   min-height: 3.2em;
-  border: 1px solid #bdbdbd;
+  border: 1px solid Grey;
   margin-bottom: 1rem;
   font-size: 1.1em;
   line-height: 3.2em;
-  background-color: #ffffff;
+  background-color: White;
   padding: 0 1.5em;
   cursor: pointer;
   display: flex;
@@ -13,5 +15,5 @@
 
 .count {
   font-size: 0.8em;
-  color: #cacaca;
+  color: LightGrey;
 }

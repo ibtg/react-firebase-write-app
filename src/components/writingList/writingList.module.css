@@ -1,8 +1,10 @@
+@value White, LightGrey, LightPink from '../../common/styles.css';
+
 .content {
-  border: 2px solid #f8bdbd;
+  border: 2px solid LightPink;
   margin: 2em 0;
   padding: 2em 3em;
-  background-color: #fff;
+  background-color: White;
   display: flex;
   flex-direction: column;
   white-space: pre-wrap;
@@ -30,7 +32,7 @@
   align-items: center;
   margin-top: 1.4em;
   font-size: 1.1em;
-  color: #acacac;
+  color: LightGrey;
 }
 .writer,
 .date {

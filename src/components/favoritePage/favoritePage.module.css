@@ -1,7 +1,9 @@
+@value White, Black, Grey, LightGrey from '../../common/styles.css';
+
 .wrapper {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: White;
 }
 
 .container {
@@ -26,9 +28,9 @@
   padding: 0 0.5em 0.2em 0.5em;
   font-family: inherit;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid Grey;
   outline: none;
-  color: #333;
+  color: Black;
 }
 
 .contentContainer {
@@ -44,7 +46,7 @@
 }
 
 .content {
-  color: #333;
+  color: Black;
   white-space: pre-wrap;
 }
 
@@ -57,7 +59,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 2em;
-  color: #ccc;
+  color: Grey;
 }
 
 .date {

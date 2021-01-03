@@ -1,4 +1,4 @@
-@value backgroundWhite, fontBlack, fontLightGrey, borderLightPink, fadeIn from '../../common/colors.css';
+@value White, Black, LightGrey, LightPink, fadeIn from '../../common/styles.css';
 
 .container {
   display: flex;
@@ -13,14 +13,14 @@
 .subject {
   font-size: 2.4em;
   margin-bottom: 1rem;
-  color: fontBlack;
+  color: Black;
   animation: fadeIn 0.7s ease-in;
 }
 
 .writing {
   font-size: 1.3em;
   margin-bottom: 1rem;
-  color: fontBlack;
+  color: Black;
   white-space: pre-wrap;
   text-align: center;
   line-height: 1.5em;
@@ -28,7 +28,7 @@
 }
 
 .writingInfo {
-  color: fontLightGrey;
+  color: LightGrey;
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
@@ -45,7 +45,7 @@
   outline: none;
   border: none;
   font-family: inherit;
-  color: fontLightGrey;
+  color: LightGrey;
   cursor: pointer;
   font-size: 1em;
   margin-bottom: 4rem;
@@ -61,9 +61,9 @@
   background-color: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid borderLightPink;
+  border-bottom: 1px solid LightPink;
   cursor: pointer;
-  color: fontBlack;
+  color: Black;
   font-family: inherit;
   font-size: 1.2em;
   animation: fadeIn 0.9s ease-in;

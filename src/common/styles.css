@@ -1,0 +1,17 @@
+@value White: #fff;
+@value Black: #333;
+@value LightBlack: #666;
+@value Grey: #ccc;
+@value LightGrey: #acacac;
+@value DarkGrey: #dce1e6;
+@value LightPink: #f8bdbd;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    color: w;
+  }
+}

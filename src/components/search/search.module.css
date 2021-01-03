@@ -1,3 +1,5 @@
+@value Black, LightGrey, LightPink from '../../common/styles.css';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -16,14 +18,14 @@
 .writing {
   font-size: 1.3em;
   margin: 1.4rem 0;
-  color: #333;
+  color: Black;
   white-space: pre-wrap;
   text-align: center;
   line-height: 1.5em;
 }
 
 .writingInfo {
-  color: #acacaa;
+  color: LightGrey;
   display: flex;
   flex-direction: row;
   margin-bottom: 1.5rem;
@@ -39,7 +41,7 @@
   outline: none;
   border: none;
   font-family: inherit;
-  color: #acacaa;
+  color: LightGrey;
   cursor: pointer;
   margin-bottom: 1rem;
 }
@@ -48,9 +50,9 @@
   background-color: transparent;
   outline: none;
   border: none;
-  border-bottom: 1px solid #f8bdbd;
+  border-bottom: 1px solid LightPink;
   cursor: pointer;
-  color: #333;
+  color: Black;
   font-family: inherit;
   font-size: 1.2em;
   margin-bottom: 1em;

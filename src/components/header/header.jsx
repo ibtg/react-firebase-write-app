@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, memo } from 'react'
 import styles from './header.module.css'
 import {AiOutlineMenu} from 'react-icons/ai'
 import Sidebar from '../sidebar/sidebar'
 import { useHistory } from 'react-router-dom'
 
 
-const Header = ({authService}) => {
+const Header = memo(({authService}) => {
   const [dateInfo, setDateInfo] = useState({})
   const [sidebar, setSidebar] = useState(false)
   const history = useHistory()
@@ -104,6 +104,6 @@ const Header = ({authService}) => {
     </>
 
   )
-}
+})
 
 export default Header

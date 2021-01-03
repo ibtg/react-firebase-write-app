@@ -1,7 +1,9 @@
+@value White, Grey, Black from '../../common/styles.css';
+
 .container {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: White;
 }
 
 .form {
@@ -25,9 +27,9 @@
   padding: 0 0.5em 0.2em 0.5em;
   font-family: inherit;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid Grey;
   outline: none;
-  color: #333;
+  color: Black;
 }
 
 .content {
@@ -38,7 +40,7 @@
   font-size: 1.2em;
   font-family: inherit;
   resize: none;
-  color: #333;
+  color: Black;
   white-space: pre-wrap;
 }
 
@@ -47,7 +49,7 @@
 }
 
 .content::placeholder {
-  color: #ccc;
+  color: Grey;
 }
 
 .buttonContainer {

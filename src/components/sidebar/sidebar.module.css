@@ -1,7 +1,9 @@
+@value White, Black, Grey, LightPink from '../../common/styles.css';
+
 .sidebar {
   height: 100%;
   width: 20em;
-  background-color: #fff;
+  background-color: White;
   position: fixed;
   left: -20em;
   padding: 0 20px;
@@ -22,7 +24,7 @@
 .menu {
   font-size: 1.8em;
   cursor: pointer;
-  color: #000;
+  color: Black;
 }
 
 .info {
@@ -44,7 +46,7 @@
   height: 3em;
   font-size: 1.2em;
   line-height: 3em;
-  color: #333;
+  color: Black;
 }
 
 .item:after {
@@ -53,7 +55,7 @@
   margin: 0 auto;
   content: '';
   transform: scaleX(0);
-  border-bottom: 2px solid #f8bdbd;
+  border-bottom: 2px solid LightPink;
   transition: transform 0.4s ease-in-out;
   cursor: pointer;
 }
@@ -84,7 +86,7 @@
 .searchInput {
   border: none;
   outline: none;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid Black;
   font-family: inherit;
   padding: 0.2em;
   text-align: center;
@@ -92,5 +94,5 @@
 }
 
 .searchInput::placeholder {
-  color: #ccc;
+  color: Grey;
 }

@@ -1,8 +1,8 @@
-@value backgroundWhite, fontBlack, fontLightGrey from '../../common/colors.css';
+@value White, Black, LightGrey from '../../common/styles.css';
 
 .header {
   width: 100%;
-  background-color: backgroundWhite;
+  background-color: White;
   height: 3.6em;
   position: fixed;
   top: 0;
@@ -18,6 +18,6 @@
 }
 
 .date {
-  color: fontLightGrey;
+  color: LightGrey;
   font-size: 1.2em;
 }
