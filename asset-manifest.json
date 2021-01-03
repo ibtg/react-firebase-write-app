@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-firebase-write-app/static/css/main.77214867.chunk.css",
-    "main.js": "/react-firebase-write-app/static/js/main.eb518a62.chunk.js",
-    "main.js.map": "/react-firebase-write-app/static/js/main.eb518a62.chunk.js.map",
+    "main.css": "/react-firebase-write-app/static/css/main.e6f8a1e3.chunk.css",
+    "main.js": "/react-firebase-write-app/static/js/main.503fc6f8.chunk.js",
+    "main.js.map": "/react-firebase-write-app/static/js/main.503fc6f8.chunk.js.map",
     "runtime-main.js": "/react-firebase-write-app/static/js/runtime-main.53a942e5.js",
     "runtime-main.js.map": "/react-firebase-write-app/static/js/runtime-main.53a942e5.js.map",
-    "static/js/2.8835f247.chunk.js": "/react-firebase-write-app/static/js/2.8835f247.chunk.js",
-    "static/js/2.8835f247.chunk.js.map": "/react-firebase-write-app/static/js/2.8835f247.chunk.js.map",
+    "static/js/2.4b0bf119.chunk.js": "/react-firebase-write-app/static/js/2.4b0bf119.chunk.js",
+    "static/js/2.4b0bf119.chunk.js.map": "/react-firebase-write-app/static/js/2.4b0bf119.chunk.js.map",
     "index.html": "/react-firebase-write-app/index.html",
-    "static/css/main.77214867.chunk.css.map": "/react-firebase-write-app/static/css/main.77214867.chunk.css.map",
-    "static/js/2.8835f247.chunk.js.LICENSE.txt": "/react-firebase-write-app/static/js/2.8835f247.chunk.js.LICENSE.txt"
+    "static/css/main.e6f8a1e3.chunk.css.map": "/react-firebase-write-app/static/css/main.e6f8a1e3.chunk.css.map",
+    "static/js/2.4b0bf119.chunk.js.LICENSE.txt": "/react-firebase-write-app/static/js/2.4b0bf119.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.53a942e5.js",
-    "static/js/2.8835f247.chunk.js",
-    "static/css/main.77214867.chunk.css",
-    "static/js/main.eb518a62.chunk.js"
+    "static/js/2.4b0bf119.chunk.js",
+    "static/css/main.e6f8a1e3.chunk.css",
+    "static/js/main.503fc6f8.chunk.js"
   ]
 }
