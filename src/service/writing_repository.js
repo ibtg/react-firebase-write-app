@@ -58,7 +58,7 @@ class WritingRepository{
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDate - prev[1].addDate)
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDateNow - prev[1].addDateNow)
         const orderedObj = Object.fromEntries(orderedArray)
         onUpdate(orderedObj)
       }
@@ -93,7 +93,7 @@ class WritingRepository{
       if (value === null){
         onUpdate({'no':'no results'})
       }else{
-        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDate - prev[1].addDate)
+        const orderedArray = Object.entries(value).sort((prev, curr) => curr[1].addDateNow - prev[1].addDateNow)
         const orderedObj = Object.fromEntries(orderedArray)
         onUpdate(orderedObj)
       }
