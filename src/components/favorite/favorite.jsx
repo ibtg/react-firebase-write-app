@@ -15,7 +15,7 @@ const Favorite = ({user, authService, writingRepository}) => {
     const writing = event.currentTarget.childNodes[1].innerHTML
     const username = event.currentTarget.childNodes[2].childNodes[0].innerText
     const addDate = event.currentTarget.childNodes[2].childNodes[1].innerText
-    const subjectId = event.currentTarget.dataset.id
+    const writingId = event.currentTarget.dataset.id
     const alignCenter = JSON.parse(event.currentTarget.dataset.align)
 
     history.push({
@@ -26,7 +26,7 @@ const Favorite = ({user, authService, writingRepository}) => {
         username:username,
         addDate:addDate,
         alignCenter:alignCenter,
-        subjectId:subjectId
+        subjectId:writingId
       }
     })
   }

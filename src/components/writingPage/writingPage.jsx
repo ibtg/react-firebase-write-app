@@ -11,14 +11,13 @@ const WritingPage = ({user, authService, writingRepository}) => {
   const writing = historyState && historyState.writing
   const username = historyState && historyState.username
   const addDate = historyState && historyState.addDate
-  const subjectId = historyState && historyState.subjectId
   const alignCenter = historyState && historyState.alignCenter
 
   const addFavoriteWriting= (event)=>{
     event.preventDefault();
-
+    const writingId = Date.now()
     const favoriteObj = {
-      addDateNow: Date.now(),
+      addDateNow: writingId,
       addDate : addDate,
       subject:subject,
       username:username,
@@ -26,7 +25,7 @@ const WritingPage = ({user, authService, writingRepository}) => {
       alignCenter:alignCenter
     }
 
-    writingRepository.addToFavorite(user.uid, subjectId, favoriteObj)
+    writingRepository.addToFavorite(user.uid, writingId, favoriteObj)
     history.push({
       pathname:`/favorite`
     })

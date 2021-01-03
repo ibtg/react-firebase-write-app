@@ -103,15 +103,15 @@ class WritingRepository{
   }
 
   // add to user's favorite writing
-  addToFavorite(userId, subjectId, writing){
+  addToFavorite(userId, writingId, writing){
     // save as user
-    firebaseDatabase.ref(`users/${userId}/favorite/${subjectId}`).set(writing)
+    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).set(writing)
 
   }
 
   // remove from favorite list
-  removeToFavorite(userId, subjectId){
-    firebaseDatabase.ref(`users/${userId}/favorite/${subjectId}`).remove()
+  removeToFavorite(userId, writingId){
+    firebaseDatabase.ref(`users/${userId}/favorite/${writingId}`).remove()
   }
 
 }
