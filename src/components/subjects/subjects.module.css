@@ -2,13 +2,12 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-}
-
-.list {
-  padding-top: 4.2rem;
+  padding-top: 3.8em;
   padding-bottom: 1.2em;
   display: flex;
   flex-direction: column;
-  margin: 0 25%;
-  height: 100%;
+}
+
+.list {
+  margin: 2em 25% 0;
 }
