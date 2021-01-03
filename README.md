@@ -1,6 +1,6 @@
 ## Project
 
-- [씀](https://apps.apple.com/kr/app/%EC%94%80-%EC%9D%BC%EC%83%81%EC%A0%81-%EA%B8%80%EC%93%B0%EA%B8%B0/id1118780107) 이라는 어플리케이션의 주요 기능을 웹으로 구현한 프로젝트 입니다.
+- [씀](https://apps.apple.com/kr/app/%EC%94%80-%EC%9D%BC%EC%83%81%EC%A0%81-%EA%B8%80%EC%93%B0%EA%B8%B0/id1118780107) 이라는 글을 작성하고 공유할 수 있는 어플리케이션의 어플리케이션의 주요 기능을 웹으로 구현한 프로젝트 입니다.
 - 다음과 같은 주요 기능을 구현하였습니다
 
   - 로그인, 로그아웃 및 유저의 상태에 따라 컴포넌트 접근을 제한하는 Authentification Check 구현
