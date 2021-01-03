@@ -14,17 +14,21 @@ const Search = ({authService, writingRepository}) => {
 
   const goToWritingPage = (event) =>{
     event.preventDefault();
-    const subject = event.currentTarget.childNodes[0].innerHTML
-    const writing = event.currentTarget.childNodes[1].innerHTML
-    const username = event.currentTarget.childNodes[2].innerHTML
-
+    const subject = event.currentTarget.childNodes[0].innerText
+    const writing = event.currentTarget.childNodes[1].innerText
+    const username = event.currentTarget.childNodes[2].childNodes[0].innerText
+    const addDate = event.currentTarget.childNodes[2].childNodes[1].innerText
+    const alignCenter = JSON.parse(event.currentTarget.dataset.align)
+    
     history.push({
       pathname:'/writingPage',
       state:{
         subject:subject,
         writing:writing,
         username:username,
-        subjectId:subjectId
+        addDate:addDate,
+        subjectId:subjectId,
+        alignCenter:alignCenter
       }
     })
   }

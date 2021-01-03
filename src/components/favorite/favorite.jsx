@@ -13,8 +13,10 @@ const Favorite = ({user, authService, writingRepository}) => {
     event.preventDefault();
     const subject = event.currentTarget.childNodes[0].innerHTML
     const writing = event.currentTarget.childNodes[1].innerHTML
-    const username = event.currentTarget.childNodes[2].innerHTML
+    const username = event.currentTarget.childNodes[2].childNodes[0].innerText
+    const addDate = event.currentTarget.childNodes[2].childNodes[1].innerText
     const subjectId = event.currentTarget.dataset.id
+    const alignCenter = JSON.parse(event.currentTarget.dataset.align)
 
     history.push({
       pathname:`/favoritePage`,
@@ -22,6 +24,8 @@ const Favorite = ({user, authService, writingRepository}) => {
         subject:subject,
         writing:writing,
         username:username,
+        addDate:addDate,
+        alignCenter:alignCenter,
         subjectId:subjectId
       }
     })

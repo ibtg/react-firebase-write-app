@@ -15,13 +15,15 @@ const MyWriting = ({user, authService, writingRepository}) => {
     const subject = childeNodes[0].innerText
     const writing = childeNodes[1].innerHTML
     const subjectId = event.currentTarget.dataset.id
+    const alignCenter = JSON.parse(event.currentTarget.dataset.align)
 
     history.push({
       pathname:`/mywritingpage`,
       state:{
         subject: subject,
         subjectId: subjectId,
-        writing: writing
+        writing: writing,
+        alignCenter:alignCenter
       }
 
     })

@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useRef, useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './myWritingPage.module.css'
 import Header from '../header/header'
@@ -13,7 +13,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
   const history = useHistory()
   const formRef = useRef();
   const textareaRef = useRef();
-  const [alignCenter, setAlignCenter] = useState(false)
+  const [alignCenter, setAlignCenter] = useState(historyState && historyState.alignCenter)
 
 
   const onSubmit = (event) =>{
@@ -61,6 +61,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
     setWriting(event.currentTarget.value)
   }
 
+
   return (
     <>
       <Header authService={authService}></Header>
@@ -70,7 +71,7 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
           <textarea 
             autoFocus={true}
             ref={textareaRef} 
-            className={ alignCenter ? `${styles.content} ${styles.center}` : `${styles.content}`}
+            className={ alignCenter === true ? `${styles.content} ${styles.center}` : `${styles.content}`}
             minLength="1" 
             placeholder='당신의 생각을 들려주세요'
             value={writing}

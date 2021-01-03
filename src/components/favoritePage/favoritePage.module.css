@@ -30,25 +30,37 @@
   color: #333;
 }
 
-.title::placeholder {
-  color: #ccc;
-}
-
-.content {
+.contentContainer {
   flex-basis: 90%;
   padding: 0.5em;
   border: none;
   outline: none;
   font-size: 1.2em;
-  /* overflow-y: scroll; */
   font-family: inherit;
-  resize: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
   color: #333;
   white-space: pre-wrap;
 }
 
-.content::placeholder {
+.center {
+  text-align: center;
+}
+
+.writingInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
   color: #ccc;
+}
+
+.date {
+  margin-bottom: 0.4em;
 }
 
 .buttonContainer {
@@ -57,10 +69,6 @@
   justify-content: flex-end;
   padding-right: 1em;
   align-items: center;
-}
-
-.username {
-  color: #ccc;
 }
 
 .button {
