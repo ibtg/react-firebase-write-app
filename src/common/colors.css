@@ -1,5 +1,14 @@
 @value backgroundWhite: #fff;
-@value fontBlack: #000;
+@value fontBlack: #333;
 @value fontLightBlack:#ccc;
 @value fontLightGrey: #acacac;
 @value borderLightPink: #f8bdbd;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
