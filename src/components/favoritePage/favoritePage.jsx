@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styles from './favoritePage.module.css'
 import Header from '../header/header'
 import { useHistory } from 'react-router-dom'
@@ -22,6 +22,18 @@ const FavoritePage = ({user, authService, writingRepository}) => {
     })
 
   }
+
+  useEffect(() => {
+    
+    if(historyState === undefined){
+      history.push({
+        pathname:"/"
+      })
+
+    }
+
+
+  }, [history, historyState])
 
 
   return (

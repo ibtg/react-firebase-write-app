@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import styles from './myWritingPage.module.css'
 import Header from '../header/header'
@@ -16,6 +16,18 @@ const MyWritingPage = ({user, authService, writingRepository}) => {
   const [alignCenter, setAlignCenter] = useState(historyState && historyState.alignCenter)
 
 
+  useEffect(() => {
+    
+    if(historyState === undefined){
+      history.push({
+        pathname:"/"
+      })
+
+    }
+
+
+  }, [history, historyState])
+  
   const onSubmit = (event) =>{
     event.preventDefault();
     if(textareaRef.current.value === ''){

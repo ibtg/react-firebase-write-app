@@ -11,6 +11,7 @@ import Favorite from './components/favorite/favorite'
 import FavoritePage from './components/favoritePage/favoritePage'
 import MyWritingPage from './components/myWritingPage/myWritingPage'
 import PageNotFound from './components/pageNotFound/pageNotFound'
+import Header from './components/header/header'
 import Auth from './hoc/auth'
 
 function App({authService, writingRepository}) {
@@ -32,6 +33,7 @@ function App({authService, writingRepository}) {
           <Route exact path="/favorite" component={Auth(Favorite, authService, writingRepository )}></Route>
           <Route exact path="/favoritePage" component={Auth(FavoritePage, authService, writingRepository )}></Route>
           <Route path="/">
+            <Header></Header>
             <PageNotFound></PageNotFound>
           </Route>
         </Switch>
