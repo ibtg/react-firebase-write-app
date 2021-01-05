@@ -15,6 +15,18 @@ const WritePage = ({user, authService, writingRepository}) => {
   const formRef = useRef();
   const textareaRef = useRef();
 
+  useEffect(() => {
+    
+    if(historyState === undefined){
+      history.push({
+        pathname:"/"
+      })
+
+    }
+
+
+  }, [history, historyState])
+
   const onSubmit = (event) =>{
     event.preventDefault();
     if(textareaRef.current.value === ''){
