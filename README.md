@@ -14,6 +14,22 @@
 
 ---
 
+## 화면
+
+|            로그인            |             홈              |
+| :--------------------------: | :-------------------------: |
+| <img src="images/login.png"> | <img src="images/home.png"> |
+
+|            글쓰기             |              글감              |
+| :---------------------------: | :----------------------------: |
+| <img src="images/writie.png"> | <img src="images/subject.png"> |
+
+|               글               |             보관함             |
+| :----------------------------: | :----------------------------: |
+| <img src="images/writing.png"> | <img src="images/storage.png"> |
+
+---
+
 ## Browsers support
 
 - 다음과 같은 웹 브라우저 환경에서 동작합니다.
